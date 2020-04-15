@@ -49,6 +49,6 @@ class User extends Authenticatable
     }
 
     public function libros(){
-        return $this->belongsToMany(Libro::id);
+        return $this->belongsToMany(Libro::class);
     }
 }

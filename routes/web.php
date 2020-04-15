@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::post('/agregar/{libro}', 'LibUserController@agregar')->name('libUser.agregar');
+
 Route::post('/comentarioLibro/{libro}', 'ComentarioController@storeLibro')->name('comentarios.storeLibro');
 
 Route::post('/comentarioUser/{user}','ComentarioController@storeUser')->name('comentarios.storeUser');

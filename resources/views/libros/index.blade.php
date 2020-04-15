@@ -40,11 +40,6 @@
                         <div>
                             <a href="{{route('libros.show',$libro->id)}}" class="btn btn-primary btn-sm">Detalles</a>
                         </div>
-                        <br>
-                        <div>
-                            <a href="{{route('libros.show',$libro->id)}}" class="btn btn-primary btn-sm">Añadir</a>
-                        </div>
-                        
                     </td>
                 </tr>
             @endforeach

@@ -18,13 +18,33 @@
         <p>{{$user->email}}</p>
       </div>
     </div>
+
+    <hr>
+
+    <div>
+      <h2 class="apartados">Colección</h2>
+      @if (count($user->libros))
+        <ul class="list-group">
+            @foreach ($user->libros as $libro)
+                <li class="list-group-item"><a href="{{route('users.show',$libro->id)}}">{{$libro->titulo}}</a></li>
+            @endforeach
+        </ul>
+      @else
+          <p>Aún no tiene libros agregados</p>
+      @endif
+    </div>
+
     <hr>
     <div>
       <h2 class="apartados">Comentarios</h2>
-      @foreach ($user->comentarios as $comentario)
-        <a href="{{route('users.show',$comentario->user->id)}}">{{$comentario->user->name}}</a>
-        <p>{{$comentario->contenido}}</p>
-      @endforeach
+      @if (count($user->comentarios))
+        @foreach ($user->comentarios as $comentario)
+          <a href="{{route('users.show',$comentario->user->id)}}">{{$comentario->user->name}}</a>
+          <p>{{$comentario->contenido}}</p>
+        @endforeach
+      @else
+          <p>No tiene ningún comentario</p>
+      @endif
     </div>
     <br>
     <div>

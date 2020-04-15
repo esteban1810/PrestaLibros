@@ -6,6 +6,11 @@
 <div class="card-body">
     <div class="float-right">
         <a href="{{route('libros.index')}}" class="btn btn-primary btn-sm">Ver Lista</a>
+        <p></p>
+        <form action="{{route('libUser.agregar',$libro->id)}}" method="POST">
+            <input type="submit" value="Añadir a mi biblioteca" class="btn btn-primary btn-sm">
+            @csrf
+        </form>
     </div>
 
     <h1>{{$libro->titulo}}</h1>
@@ -61,11 +66,15 @@
 
     <div>
         <h2 class="apartados">Personas que tienen el libro</h2>
-        <ul class="list-group">
-            @foreach ($libro->users as $user)
-                <li class="list-group-item"><a href="{{route('users.show',$user->id)}}">{{$user->name}}</a></li>
-            @endforeach
-        </ul>
+        @if (count($libro->users))
+            <ul class="list-group">
+                @foreach ($libro->users as $user)
+                    <li class="list-group-item"><a href="{{route('users.show',$user->id)}}">{{$user->name}}</a></li>
+                @endforeach
+            </ul>
+        @else
+        <p>Nadie lo tiene</p>
+        @endif
     </div>
 
     <hr>
