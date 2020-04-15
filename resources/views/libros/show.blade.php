@@ -81,15 +81,15 @@
 
     <div>
         <h2 class="apartados">Comentarios</h2>
-        @if (isset($libro->comentarios))
-            <p>No hay comentarios</p>
+        @if (count($libro->comentarios))
+            @foreach ($libro->comentarios as $comentario)
+                <a href="{{route('users.show',$comentario->user->id)}}">{{$comentario->user->name}}</a>
+                <p>
+                    {{$comentario->contenido}}
+                </p>
+            @endforeach
         @else
-        @foreach ($libro->comentarios as $comentario)
-            <a href="{{route('users.show',$comentario->user->id)}}">{{$comentario->user->name}}</a>
-            <p>
-                {{$comentario->contenido}}
-            </p>
-        @endforeach
+            <p>No hay comentarios</p>
         @endif
     </div>
     <br>
