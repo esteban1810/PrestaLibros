@@ -19,9 +19,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::post('/comentarios/{libro}', 'ComentarioController@storeLibro')->name('comentarios.storeLibro');
+Route::post('/comentarioLibro/{libro}', 'ComentarioController@storeLibro')->name('comentarios.storeLibro');
 
-Route::post('/comentarios/{user}','ComentarioController@storeUser')->name('comentarios.storeUser');
+Route::post('/comentarioUser/{user}','ComentarioController@storeUser')->name('comentarios.storeUser');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

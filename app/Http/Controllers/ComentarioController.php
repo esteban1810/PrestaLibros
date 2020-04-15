@@ -49,6 +49,7 @@ class ComentarioController extends Controller
 
         $libro->comentarios()->create([
             'contenido' => $request->contenido,
+            'user_id' => \Auth::id(),
             'comentario_id' => $id,
             'comentario_type' => 'App\Libro'
         ]);
@@ -61,6 +62,7 @@ class ComentarioController extends Controller
         
         $user->comentarios()->create([
             'contenido' => $request->contenido,
+            'user_id' => \Auth::id(),
             'comentario_id' => $id,
             'comenatario_type' => 'App\User'
         ]);

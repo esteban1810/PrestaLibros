@@ -14,32 +14,41 @@
             <input type="submit" class="btn btn-primary" value="Todo">
         </form>
     </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">genero_id</th>
-                <th scope="col">autor</th>
-                <th scope="col">titulo</th>
-                <th scope="col">editorial</th>
-                <th scope="col">edicion</th>
-                <th scope="col">año</th>
-                <th scope="col">descripcion</th>
-            </tr>
-        </thead>
-        <tbody>
-                <tr>
-                    <th scope="row"><a href="{{route('libros.show',$libro->id)}}">{{$libro->id}}</a></th>
-                    <td>{{$libro->genero_id}}</td>
-                    <td>{{$libro->autor}}</td>
-                    <td>{{$libro->titulo}}</td>
-                    <td>{{$libro->editorial}}</td>
-                    <td>{{$libro->edicion}}</td>
-                    <td>{{$libro->anio}}</td>
-                    <td>{{$libro->descripcion}}</td>
-                </tr>
-        </tbody>
-    </table>
+
+    <h1>{{$libro->titulo}}</h1>
+
+    <div>
+        <div>
+            <h2>Autor</h2>
+            <p>{{$libro->autor}}</p>
+        </div>
+    
+        <div>
+            <h2>Género</h2>
+            <p>#Aqui va el genero#</p>
+        </div>
+    
+        <div>
+            <h2>Editorial</h2>
+            <p>{{$libro->editorial}}</p>
+        </div>
+    
+        <div>
+            <h2>Edición</h2>
+            <p>{{$libro->edicion}}</p>
+        </div>
+    
+        <div>
+            <h2>Año De Publicación</h2>
+            <p>{{$libro->anio}}</p>
+        </div>
+    
+        <div>
+            <h2>Descripcion</h2>
+            <p>{{$libro->descripcion}}</p>
+        </div>
+    </div>
+    <hr>
 
     <div class="form-group col-md-6">
         <form action="{{route('libros.edit',$libro->id)}}" method="GET">
@@ -48,11 +57,14 @@
     </div>
 
     <div class="form-group col-md-6">
-        <form action="{{route('libros.destroy',$libro->id)}}" method="get">
+        <form action="{{route('libros.destroy',$libro->id)}}" method="POST">
             <input type="submit" class="btn btn-danger" value="Eliminar">
             @method('DELETE')
+            @csrf
         </form>
     </div>
+
+    <hr>
 
     <div>
         @foreach ($libro->comentarios as $comentario)
