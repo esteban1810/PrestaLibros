@@ -53,5 +53,23 @@
             @method('DELETE')
         </form>
     </div>
+
+    <div>
+        @foreach ($libro->comentarios as $comentario)
+            <p>
+                {{$comentario->contenido}}
+            </p>
+        @endforeach
+    </div>
+    <p></p>
+    <form action="{{route('comentarios.storeLibro',$libro->id)}}" method="POST">
+        <div class="form-group">
+            <label for="comentario">Comentario</label>
+            <textarea class="form-control" id="comentario" name="contenido" rows="5"></textarea>
+        </div>
+        @csrf
+        <input type="submit" value="Aceptar" class="btn btn-primary">
+    </form>
 </div>
+
 @endsection

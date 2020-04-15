@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="card-header">Agregar</div>
 
 <div class="card-body">
     <div class="container">

@@ -50,7 +50,7 @@ class LibroController extends Controller
      */
     public function show($id)
     {
-        $libro = Libro::findOrFail($id)->first();
+        $libro = Libro::findOrFail($id);
         return view('libros.show',compact('libro'));
     }
 
@@ -62,7 +62,7 @@ class LibroController extends Controller
      */
     public function edit($id)
     {
-        $libro = Libro::findOrFail($id)->first();
+        $libro = Libro::findOrFail($id);
         return view('libros.form',compact('libro'));
     }
 

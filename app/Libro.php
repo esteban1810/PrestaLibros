@@ -14,4 +14,8 @@ class Libro extends Model
         'anio',
         'descripcion'
     ];
+
+    public function comentarios(){
+        return $this->morphMany(Comentario::class,'comentario');
+    }
 }
