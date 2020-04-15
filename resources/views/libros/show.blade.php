@@ -1,62 +1,55 @@
 @extends('libros.master')
 
 @section('contenido')
-<div class="card-header">Libros</div>
+<div class="card-header">Libro</div>
 
 <div class="card-body">
-    <p>
-        <form action="{{route('libros.create')}}" method="GET">
-            <input type="submit" class="btn btn-primary" value="Agregar">
-        </form>
-    </p>
-    <p>
-        <form action="{{route('libros.index')}}" method="GET">
-            <input type="submit" class="btn btn-primary" value="Todo">
-        </form>
-    </p>
+    <div class="float-right">
+        <a href="{{route('libros.index')}}" class="btn btn-primary btn-sm">Ver Lista</a>
+    </div>
 
     <h1>{{$libro->titulo}}</h1>
 
     <div>
         <div>
-            <h2>Autor</h2>
+            <h2 class="apartados">Autor</h2>
             <p>{{$libro->autor}}</p>
         </div>
     
         <div>
-            <h2>Género</h2>
+            <h2 class="apartados">Género</h2>
             <p>#Aqui va el genero#</p>
         </div>
     
         <div>
-            <h2>Editorial</h2>
+            <h2 class="apartados">Editorial</h2>
             <p>{{$libro->editorial}}</p>
         </div>
     
         <div>
-            <h2>Edición</h2>
+            <h2 class="apartados">Edición</h2>
             <p>{{$libro->edicion}}</p>
         </div>
     
         <div>
-            <h2>Año De Publicación</h2>
+            <h2 class="apartados">Año De Publicación</h2>
             <p>{{$libro->anio}}</p>
         </div>
     
         <div>
-            <h2>Descripcion</h2>
+            <h2 class="apartados">Descripción</h2>
             <p>{{$libro->descripcion}}</p>
         </div>
     </div>
     <hr>
 
-    <div class="form-group col-md-6">
+    <div class="form-group">
         <form action="{{route('libros.edit',$libro->id)}}" method="GET">
             <input type="submit" class="btn btn-warning" value="Editar">
         </form>
     </div>
 
-    <div class="form-group col-md-6">
+    <div class="form-group">
         <form action="{{route('libros.destroy',$libro->id)}}" method="POST">
             <input type="submit" class="btn btn-danger" value="Eliminar">
             @method('DELETE')
@@ -67,7 +60,9 @@
     <hr>
 
     <div>
+        <h2 class="apartados">Comentarios</h2>
         @foreach ($libro->comentarios as $comentario)
+            <a href="{{route('users.show',$comentario->user->id)}}">{{$comentario->user->name}}</a>
             <p>
                 {{$comentario->contenido}}
             </p>
@@ -76,7 +71,7 @@
     <p></p>
     <form action="{{route('comentarios.storeLibro',$libro->id)}}" method="POST">
         <div class="form-group">
-            <label for="comentario">Comentario</label>
+            <label for="comentario" style="font-weight: bold;">Comentario</label>
             <textarea class="form-control" id="comentario" name="contenido" rows="5"></textarea>
         </div>
         @csrf

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Comentario extends Model
 {
@@ -16,5 +17,9 @@ class Comentario extends Model
     
     public function comentario(){
         return $this->morphTo();
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

@@ -42,4 +42,8 @@ class User extends Authenticatable
     public function comentarios(){
         return $this->morphMany(Comentario::class,'comentario');
     }
+
+    public function comentarios2(){
+        return $this->hasMany(Comentario::class);
+    }
 }
