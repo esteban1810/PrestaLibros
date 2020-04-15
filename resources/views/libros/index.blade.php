@@ -4,41 +4,48 @@
 <div class="card-header">Libros</div>
 
 <div class="card-body">
-    <p>
-        <form action="{{route('libros.create')}}" method="GET">
-            <input type="submit" class="btn btn-primary" value="Agregar">
-        </form>
-    </p>
-    <p>
-        <form action="{{route('libros.index')}}" method="GET">
-            <input type="submit" class="btn btn-primary" value="Todo">
-        </form>
-    </p>
+    <div>
+        <a href="{{route('libros.index')}}" class="btn btn-primary btn-md">Ver Lista</a>
+        <a href="{{route('libros.create')}}" class="btn btn-primary btn-md">Nuevo</a>
+    </div>
+   <br>
     
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">genero_id</th>
-                <th scope="col">autor</th>
-                <th scope="col">titulo</th>
-                <th scope="col">editorial</th>
+                {{-- <th scope="col">#</th> --}}
+                <th scope="col">Género</th>
+                <th scope="col">Titulo</th>
+                <th scope="col">Autor</th>
+                {{-- <th scope="col">editorial</th>
                 <th scope="col">edicion</th>
-                <th scope="col">año</th>
-                <th scope="col">descripcion</th>
+                <th scope="col">año</th> --}}
+                <th scope="col">Descripción</th>
+                <th scope="col">Operaciones</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($libros as $libro)
                 <tr>
-                    <th scope="row"><a href="{{route('libros.show',$libro->id)}}">{{$libro->id}}</a></th>
+                    {{-- <th scope="row"><a href="{{route('libros.show',$libro->id)}}">{{$libro->id}}</a></th> --}}
                     <td>{{$libro->genero_id}}</td>
-                    <td>{{$libro->autor}}</td>
                     <td>{{$libro->titulo}}</td>
-                    <td>{{$libro->editorial}}</td>
+                    <td>{{$libro->autor}}</td>
+                    {{-- <td>{{$libro->editorial}}</td>
                     <td>{{$libro->edicion}}</td>
-                    <td>{{$libro->anio}}</td>
+                    <td>{{$libro->anio}}</td> --}}
                     <td>{{$libro->descripcion}}</td>
+
+                    <td>
+                        <div>
+                            <a href="{{route('libros.show',$libro->id)}}" class="btn btn-primary btn-sm">Detalles</a>
+                        </div>
+                        <br>
+                        <div>
+                            <a href="{{route('libros.show',$libro->id)}}" class="btn btn-primary btn-sm">Añadir</a>
+                        </div>
+                        
+                    </td>
                 </tr>
             @endforeach
         </tbody>

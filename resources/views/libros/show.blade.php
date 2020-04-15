@@ -60,15 +60,30 @@
     <hr>
 
     <div>
+        <h2 class="apartados">Personas que tienen el libro</h2>
+        <ul class="list-group">
+            @foreach ($libro->users as $user)
+                <li class="list-group-item"><a href="{{route('users.show',$user->id)}}">{{$user->name}}</a></li>
+            @endforeach
+        </ul>
+    </div>
+
+    <hr>
+
+    <div>
         <h2 class="apartados">Comentarios</h2>
+        @if (isset($libro->comentarios))
+            <p>No hay comentarios</p>
+        @else
         @foreach ($libro->comentarios as $comentario)
             <a href="{{route('users.show',$comentario->user->id)}}">{{$comentario->user->name}}</a>
             <p>
                 {{$comentario->contenido}}
             </p>
         @endforeach
+        @endif
     </div>
-    <p></p>
+    <br>
     <form action="{{route('comentarios.storeLibro',$libro->id)}}" method="POST">
         <div class="form-group">
             <label for="comentario" style="font-weight: bold;">Comentario</label>

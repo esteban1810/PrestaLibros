@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\User;
+
 class Libro extends Model
 {
     protected $fillable = [
@@ -17,5 +19,9 @@ class Libro extends Model
 
     public function comentarios(){
         return $this->morphMany(Comentario::class,'comentario');
+    }
+
+    public function users(){
+        return $this->belongsToMany(user::class);
     }
 }

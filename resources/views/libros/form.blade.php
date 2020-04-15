@@ -4,20 +4,9 @@
 <div class="card-header">Nuevo Libro</div>
 
 <div class="card-body">
-    <div class="col-md-12">
-        <p>
-            <form action="{{route('libros.create')}}" method="GET">
-                <input type="submit" class="btn btn-primary" value="Agregar">
-            </form>
-        </p>
-    </div>
-    
-    <div class="col-md-12">
-        <p>
-            <form action="{{route('libros.index')}}" method="GET">
-                <input type="submit" class="btn btn-primary" value="Todo">
-            </form>
-        </p>
+
+    <div class="float-right">
+        <a href="{{route('libros.index')}}" class="btn btn-primary btn-sm">Ver Lista</a>
     </div>
 
     @if (isset($libro))

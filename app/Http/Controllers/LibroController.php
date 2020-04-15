@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Libro;
+use DB;
 
 use Illuminate\Http\Request;
 
@@ -16,6 +17,7 @@ class LibroController extends Controller
     public function index()
     {
         $libros = Libro::all();
+
         return view('libros.index', compact('libros'));
     }
 
@@ -37,7 +39,12 @@ class LibroController extends Controller
      */
     public function store(Request $request)
     {
-        Libro::create($request->all());
+        $id = Libro::create($request->all())->id;
+
+        DB::table('libro_user')->insert([
+            'user_id' => \Auth::id(),
+            'libro_id' => $id,
+        ]);
 
         return $this->index();
     }
@@ -88,6 +95,7 @@ class LibroController extends Controller
      */
     public function destroy($id)
     {
+        DB::table('libro_user')->where('libro_id',$id)->delete();
         Libro::findOrFail($id)->delete();
 
         return $this->index();
