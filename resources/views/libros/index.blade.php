@@ -5,7 +5,6 @@
 
 <div class="card-body">
     <div>
-        <a href="{{route('libros.index')}}" class="btn btn-primary btn-md">Ver Lista</a>
         <a href="{{route('libros.create')}}" class="btn btn-primary btn-md">Nuevo</a>
     </div>
    <br>

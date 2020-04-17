@@ -18,4 +18,13 @@ class LibUserController extends Controller
 
         return back();
     }
+
+    public function quitar($id){
+        
+        $user = User::findOrFail(\Auth::id());
+
+        $user->libros()->detach($id);
+
+        return back();
+    }
 }

@@ -7,8 +7,25 @@
     <div class="float-right">
         <a href="{{route('libros.index')}}" class="btn btn-primary btn-sm">Ver Lista</a>
         <p></p>
-        <form action="{{route('libUser.agregar',$libro->id)}}" method="POST">
-            <input type="submit" value="Añadir a mi biblioteca" class="btn btn-primary btn-sm">
+        @if ($libro->users->find(\Auth::id()))
+            <form action="{{route('LibUser.quitar',$libro->id)}}" method="POST">
+                <input type="submit" value="Quitar de mi biblioteca" class="btn btn-danger btn-sm">
+                @csrf
+            </form>
+        @else
+            <form action="{{route('libUser.agregar',$libro->id)}}" method="POST">
+                <input type="submit" value="Añadir a mi biblioteca" class="btn btn-success btn-sm">
+                @csrf
+            </form>
+        @endif
+        <p></p>
+        <form action="{{route('libros.edit',$libro->id)}}" method="GET">
+            <input type="submit" class="btn btn-warning btn-sm" value="Editar">
+        </form>
+        <p></p>
+        <form action="{{route('libros.destroy',$libro->id)}}" method="POST">
+            <input type="submit" class="btn btn-danger btn-sm" value="Eliminar">
+            @method('DELETE')
             @csrf
         </form>
     </div>
@@ -48,19 +65,23 @@
     </div>
     <hr>
 
-    <div class="form-group">
+    {{-- <div class="form-group float-left">
         <form action="{{route('libros.edit',$libro->id)}}" method="GET">
             <input type="submit" class="btn btn-warning" value="Editar">
         </form>
     </div>
 
-    <div class="form-group">
+    <div class="form-group float-right">
         <form action="{{route('libros.destroy',$libro->id)}}" method="POST">
             <input type="submit" class="btn btn-danger" value="Eliminar">
             @method('DELETE')
             @csrf
         </form>
-    </div>
+    </div> --}}
+
+    {{-- Eliminar p--}}
+    <p></p>
+    {{-- fin p --}}
 
     <hr>
 

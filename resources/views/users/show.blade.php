@@ -5,6 +5,19 @@
   <div class="card-body">
     <div class="float-right">
       <a href="{{route('users.index')}}" class="btn btn-primary btn-sm">Ver Lista</a>
+      <p></p>
+      <a href="{{route('home')}}" class="btn btn-primary btn-sm">Volver al menu</a>
+      <p></p>
+      <form action="{{route('users.edit',$user->id)}}" method="GET">
+        <input type="submit" class="btn btn-warning btn-sm" value="Editar">
+        @csrf
+      </form>
+      <p></p>
+      <form action="{{route('users.destroy',$user->id)}}" method="POST">
+        <input type="submit" class="btn btn-danger btn-sm" value="Eliminar">
+        @method('DELETE')
+        @csrf
+      </form>
     </div>
     <h1>Perfil</h1>
 
@@ -26,7 +39,7 @@
       @if (count($user->libros))
         <ul class="list-group">
             @foreach ($user->libros as $libro)
-                <li class="list-group-item"><a href="{{route('users.show',$libro->id)}}">{{$libro->titulo}}</a></li>
+                <li class="list-group-item"><a href="{{route('libros.show',$libro->id)}}">{{$libro->titulo}}</a></li>
             @endforeach
         </ul>
       @else
