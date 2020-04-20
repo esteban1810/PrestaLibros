@@ -36,6 +36,7 @@ class ComentarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
     // public function store(Request $request)
     // {
     //     var_dump($request->titulo);
@@ -45,6 +46,11 @@ class ComentarioController extends Controller
     // }
 
     public function storeLibro(Request $request, $id){
+=======
+
+    public function storeLibro(Request $request, $id){
+
+>>>>>>> master
         $libro = Libro::findOrFail($id);
 
         $libro->comentarios()->create([
@@ -58,6 +64,10 @@ class ComentarioController extends Controller
     }
 
     public function storeUser(Request $request, $id){
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
         $user = User::findOrFail($id);
         
         $user->comentarios()->create([

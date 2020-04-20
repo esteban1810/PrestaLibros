@@ -10,11 +10,14 @@
                     <div class="card-header">Lista De Usuarios</div>
 
                     <div class="card-body">
+<<<<<<< HEAD
                       <div>
                         <a href="{{route('home')}}" class="btn btn-primary btn-sm">Volver al menu</a>
                       </div>
                       <br>
                       
+=======
+>>>>>>> master
                       <table class="table">
                         <thead>
                           <tr>

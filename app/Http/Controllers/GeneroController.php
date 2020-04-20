@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\User;
-
-class UserController extends Controller
+class GeneroController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-
-        return view('users.index',compact('users'));
+        //
     }
 
     /**
@@ -49,9 +45,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
-
-        return view('users.show', compact('user'));
+        //
     }
 
     /**
@@ -62,13 +56,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-<<<<<<< HEAD
-        $user = User::findOrFail($id);
-
-        return view('users.edit',compact('user'));
-=======
         //
->>>>>>> master
     }
 
     /**
@@ -80,13 +68,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-<<<<<<< HEAD
-        User::findOrFail($id)->update($request->all());
-
-        return route('home');
-=======
         //
->>>>>>> master
     }
 
     /**
@@ -97,12 +79,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-<<<<<<< HEAD
-        User::findOrFail($id)->delete();
-
-        return route('home');
-=======
         //
->>>>>>> master
     }
 }
