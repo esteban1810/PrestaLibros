@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Libro;
-
 use Illuminate\Http\Request;
 
-class LibroController extends Controller
+use App\User;
+
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,9 @@ class LibroController extends Controller
      */
     public function index()
     {
-        $libros = Libro::all();
-        return view('libros.index', compact('libros'));
+        $users = User::all();
+
+        return view('users.index',compact('users'));
     }
 
     /**
@@ -26,7 +27,7 @@ class LibroController extends Controller
      */
     public function create()
     {
-        return view('libros.form');
+        //
     }
 
     /**
@@ -37,9 +38,7 @@ class LibroController extends Controller
      */
     public function store(Request $request)
     {
-        Libro::create($request->all());
-
-        return $this->index();
+        //
     }
 
     /**
@@ -50,8 +49,9 @@ class LibroController extends Controller
      */
     public function show($id)
     {
-        $libro = Libro::findOrFail($id);
-        return view('libros.show',compact('libro'));
+        $user = User::findOrFail($id);
+
+        return view('users.show', compact('user'));
     }
 
     /**
@@ -62,8 +62,7 @@ class LibroController extends Controller
      */
     public function edit($id)
     {
-        $libro = Libro::findOrFail($id);
-        return view('libros.form',compact('libro'));
+        //
     }
 
     /**
@@ -75,9 +74,7 @@ class LibroController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Libro::findOrFail($id)->update($request->all());
-
-        return $this->show($id);
+        //
     }
 
     /**
@@ -88,8 +85,6 @@ class LibroController extends Controller
      */
     public function destroy($id)
     {
-        Libro::findOrFail($id)->delete();
-
-        return $this->index();
+        //
     }
 }

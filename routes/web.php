@@ -19,6 +19,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::post('/comentariosLibros/{libro}', 'ComentarioController@storeLibro')->name('comentarios.storeLibro');
+
+Route::post('/comentariosUsuarios/{user}','ComentarioController@storeUser')->name('comentario.storeUser');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/libros', 'LibroController');
+
+Route::resource('/users', 'UserController');
+
+Route::resource('/comentarios', 'ComentarioController');
