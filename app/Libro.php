@@ -20,11 +20,8 @@ class Libro extends Model
     public function comentarios(){
         return $this->morphMany(Comentario::class,'comentario');
     }
-<<<<<<< HEAD
 
     public function users(){
         return $this->belongsToMany(user::class);
     }
-=======
->>>>>>> master
 }
