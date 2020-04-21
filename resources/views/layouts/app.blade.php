@@ -18,12 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<<<<<<< HEAD
     <link href="{{ asset('css/estilos.css') }}" rel="stylesheet">
-=======
-
-    llind
->>>>>>> master
 </head>
 <body>
     <div id="app">
