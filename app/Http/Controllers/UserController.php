@@ -62,13 +62,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-<<<<<<< HEAD
         $user = User::findOrFail($id);
 
         return view('users.edit',compact('user'));
-=======
-        //
->>>>>>> master
     }
 
     /**
@@ -80,29 +76,18 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-<<<<<<< HEAD
-        User::findOrFail($id)->update($request->all());
 
         return route('home');
-=======
-        //
->>>>>>> master
     }
-
-    /**
-     * Remove the specified resource from storage.
+    /*
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-<<<<<<< HEAD
         User::findOrFail($id)->delete();
 
         return route('home');
-=======
-        //
->>>>>>> master
     }
 }

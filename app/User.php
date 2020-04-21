@@ -7,10 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 use App\Comentario;
-<<<<<<< HEAD
 use App\Libro;
-=======
->>>>>>> master
 
 class User extends Authenticatable
 {
@@ -50,11 +47,8 @@ class User extends Authenticatable
     public function comentarios2(){
         return $this->hasMany(Comentario::class);
     }
-<<<<<<< HEAD
 
     public function libros(){
         return $this->belongsToMany(Libro::class);
     }
-=======
->>>>>>> master
 }

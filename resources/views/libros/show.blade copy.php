@@ -1,7 +1,8 @@
-@extends('libros.master')
+@extends('layouts.app')
 
 @section('contenido')
-<div class="card-header">Libro</div>
+{{dd($libro)}}
+{{-- <div class="card-header">Libro</div>
 <div class="card-body">
     <div class="float-right">
 
@@ -62,8 +63,9 @@
             <h2 class="apartados">Descripción</h2>
             <p>{{$libro->descripcion}}</p>
         </div>
-    </div> 
-    <hr>
+    </div> --}}
+
+    {{-- <hr>
 
     <div>
         <h2 class="apartados">Personas que tienen el libro</h2>
@@ -102,5 +104,6 @@
         @csrf
         <input type="submit" value="Aceptar" class="btn btn-primary">
     </form>
-</div>
+</div> --}}
+
 @endsection
