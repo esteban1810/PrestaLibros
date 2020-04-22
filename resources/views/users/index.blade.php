@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.tema')
 
 @section('content')
 
@@ -14,7 +14,7 @@
                         <a href="{{route('home')}}" class="btn btn-primary btn-sm">Volver al menu</a>
                       </div>
                       <br>
-                      
+
                       <table class="table">
                         <thead>
                           <tr>
@@ -24,7 +24,7 @@
                               <th scope="col">perfil</th>
                             </tr>
                         </thead>
-                
+
                         <tbody>
                           @foreach ($users as $user)
                           <tr>
