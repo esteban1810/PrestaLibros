@@ -37,32 +37,32 @@
             <h2 class="apartados">Autor</h2>
             <p>{{$libro->autor}}</p>
         </div>
-    
+
         <div>
             <h2 class="apartados">Género</h2>
-            <p>#Aqui va el genero#</p>
+            <p>{{$libro->genero}}</p>
         </div>
-    
+
         <div>
             <h2 class="apartados">Editorial</h2>
             <p>{{$libro->editorial}}</p>
         </div>
-    
+
         <div>
             <h2 class="apartados">Edición</h2>
             <p>{{$libro->edicion}}</p>
         </div>
-    
+
         <div>
             <h2 class="apartados">Año De Publicación</h2>
             <p>{{$libro->anio}}</p>
         </div>
-    
+
         <div>
             <h2 class="apartados">Descripción</h2>
             <p>{{$libro->descripcion}}</p>
         </div>
-    </div> 
+    </div>
     <hr>
 
     <div>
