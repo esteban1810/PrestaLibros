@@ -1,10 +1,9 @@
 <?php
 
-use App\Genero;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Genero;
 
-class GenerosTableSeeder extends Seeder
+class GeneroSeeder extends Seeder
 {
     /**
      * Run the database seeds.
