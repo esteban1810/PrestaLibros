@@ -12,10 +12,12 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        //factory(User::class,20)->create();
-        factory(User::class,20)->create()->each(function($user){
+        factory(User::class,20)->create();
+        /*
+        ->each(function($user){
             dd(factory(App\Libro::class)->make());
-            //$user->libros()->save(factory(App\Libro::class)->make());
+            $user->libros()->save(factory(App\Libro::class)->make());
         });
+        */
     }
 }

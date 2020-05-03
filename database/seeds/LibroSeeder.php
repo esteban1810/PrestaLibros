@@ -12,6 +12,15 @@ class LibroSeeder extends Seeder
      */
     public function run()
     {
+        factory(Libro::class, 100)->create()->each(function ($libro) {
+            $libro->users()->save(factory(App\User::class)->make());
+        });
+        /*
+        ->each(function ($libro) {
+            $libro->comentarios()->save(factory(App\Comentarios::class)->make());
+        });
+        */
+        /*
         Libro::create([
             'genero_id' => '3',
             'autor' => 'Stephen King',
@@ -20,10 +29,10 @@ class LibroSeeder extends Seeder
             'edicion' => 'Coleccionista',
             'anio' => '2015',
             'descripcion' => 'Es un libro sobre un payaso pasado de verga'
-        ]);
-        // ->each(function($libro){
-        //     $libro->users()->save(factory(App\User::class)->make());
-        // });
+        ])->each(function($libro){
+            $libro->users()->save(factory(App\User::class)->make());
+        });
+        
         Libro::create([
             'genero_id' => '1',
             'autor' => 'Ryard',
@@ -48,5 +57,6 @@ class LibroSeeder extends Seeder
         // ->each(function($libro){
         //     $libro->users()->save(factory(App\User::class)->make());
         // });
+        */
     }
 }
