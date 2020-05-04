@@ -8,7 +8,7 @@
         <a href="{{route('libros.create')}}" class="btn btn-primary btn-md">Nuevo</a>
     </div>
    <br>
-    
+    {{$libros->links()}}
     <table class="table">
         <thead>
             <tr>

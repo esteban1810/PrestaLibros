@@ -8,6 +8,7 @@
       <p></p>
       <a href="{{route('home')}}" class="btn btn-primary btn-sm">Volver al menu</a>
       <p></p>
+      @if(\Gate::allows('admin'))
       <form action="{{route('users.edit',$user->id)}}" method="GET">
         <input type="submit" class="btn btn-warning btn-sm" value="Editar">
         @csrf
@@ -18,6 +19,7 @@
         @method('DELETE')
         @csrf
       </form>
+      @endif
     </div>
     <h1>Perfil</h1>
 

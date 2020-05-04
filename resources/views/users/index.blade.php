@@ -14,7 +14,7 @@
                         <a href="{{route('home')}}" class="btn btn-primary btn-sm">Volver al menu</a>
                       </div>
                       <br>
-
+                      {{$users->links()}}
                       <table class="table">
                         <thead>
                           <tr>

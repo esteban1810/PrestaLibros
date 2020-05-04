@@ -16,7 +16,8 @@ class LibroController extends Controller
      */
     public function index()
     {
-        $libros = Libro::all();
+        $libros = Libro::paginate(10);
+        //$libros = Libro::with('autor, titulo, anio, descripcion')->paginate(5);
 
         return view('libros.index', compact('libros'));
     }
@@ -47,6 +48,13 @@ class LibroController extends Controller
         ]);
 
         return $this->index();
+
+        /*return redirect()->route('libros.index')
+        ->with([
+            'alerta' => 'Libro creado con éxito',
+            'clase-alerta' => 'alert-success'
+            ]);*/
+
     }
 
     /**
@@ -98,6 +106,9 @@ class LibroController extends Controller
         DB::table('libro_user')->where('libro_id',$id)->delete();
         Libro::findOrFail($id)->delete();
 
-        return $this->index();
+        return $this->index();/*->with([
+            'alerta' => 'Libro eliminado',
+            'clase-alerta' => 'alert-danger'
+            ]);*/
     }
 }

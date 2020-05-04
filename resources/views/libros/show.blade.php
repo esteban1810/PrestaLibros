@@ -19,6 +19,7 @@
             </form>
         @endif
         <p></p>
+        @if(\Gate::allows('admin'))
         <form action="{{route('libros.edit',$libro->id)}}" method="GET">
             <input type="submit" class="btn btn-warning btn-sm" value="Editar">
         </form>
@@ -28,6 +29,7 @@
             @method('DELETE')
             @csrf
         </form>
+        @endif
     </div>
 
     <h1>{{$libro->titulo}}</h1>
