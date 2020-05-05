@@ -5,7 +5,7 @@
 
 <div class="card-body">
 
-    <div class="float-right">
+    <div>
         <a href="{{route('libros.index')}}" class="btn btn-primary btn-sm">Ver Lista</a>
     </div>
 
@@ -36,18 +36,15 @@
             <label for="anio">Año</label>
             <input class="form-control" type="text" name="anio" value="{{$libro->anio}}">
         </div>
-        {{--
         <div class="form-group col-md-12">
             <label for="genero">Genero</label>
-            <select class="form-control">
-
-                    @foreach($genero as $item)
-
-                        <option>{{$item->nombre}}</option>
+            <select class="form-control" name="genero_id">
+                    <option value="">-</option>
+                    @foreach(App\Genero::all() as $genero)
+                        <option value="{{$genero->id}}">{{$genero->nombre}}</option>
                     @endforeach
             </select>
         </div>
-        --}}
         <div class="form-group col-md-12">
             <label for="descripcion">Descripcion</label>
             <textarea class="form-control" rows="3" name="descripcion">{{$libro->descripcion}}</textarea>

@@ -12,6 +12,7 @@ class GeneroSeeder extends Seeder
      */
     public function run()
     {
+        // Genero::create(['nombre' => 'Otro']);
         Genero::create(['nombre' => 'Aventura']);
         Genero::create(['nombre' => 'Ciencia Ficcion']);
         Genero::create(['nombre' => 'Terror']);

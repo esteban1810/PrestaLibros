@@ -10,6 +10,9 @@ use App\User;
 
 class ComentarioController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -41,15 +44,11 @@ class ComentarioController extends Controller
     //     var_dump($request->titulo);
     //     return;
     //     Comentario::create($request->all());
-
+        
     // }
 
     public function storeLibro(Request $request, $id){
-
-        $request->validate([
-            'contenido' => 'required|max:255',
-        ]);
-
+        
         $libro = Libro::findOrFail($id);
 
         $libro->comentarios()->create([
@@ -63,13 +62,8 @@ class ComentarioController extends Controller
     }
 
     public function storeUser(Request $request, $id){
-
-        $request->validate([
-            'contenido' => 'required|max:255',
-        ]);
-
         $user = User::findOrFail($id);
-
+        
         $user->comentarios()->create([
             'contenido' => $request->contenido,
             'user_id' => \Auth::id(),
@@ -86,9 +80,9 @@ class ComentarioController extends Controller
      * @param  \App\Comentario  $comentario
      * @return \Illuminate\Http\Response
      */
-    public function show(Comentario $comentario)
+    public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -97,9 +91,13 @@ class ComentarioController extends Controller
      * @param  \App\Comentario  $comentario
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comentario $comentario)
+    public function edit($id)
     {
-        //
+        $comentario = Comentario::findOrFail($id);
+        
+        $this->authorize('acceso',$comentario);
+
+        return view('comentarios.show',compact('comentario'));
     }
 
     /**
@@ -109,9 +107,14 @@ class ComentarioController extends Controller
      * @param  \App\Comentario  $comentario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comentario $comentario)
+    public function update(Request $request, $id)
     {
-        //
+        $comentario = Comentario::findOrFail($id);
+        $this->authorize('acceso',$comentario);
+        $comentario->update($request->all());
+        // $comentario = Comentario::findOrFail($id)->update($request->all());
+    
+        return redirect('/libros');
     }
 
     /**
@@ -120,8 +123,13 @@ class ComentarioController extends Controller
      * @param  \App\Comentario  $comentario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comentario $comentario)
+    public function destroy($id)
     {
-        //
+        $comentario = Comentario::findOrFail($id);
+        $this->authorize('acceso',$comentario);
+        $comentario->delete();
+        //Comentario::findOrFail($id)->delete();
+
+        return back();
     }
 }

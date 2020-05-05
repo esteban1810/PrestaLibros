@@ -8,11 +8,23 @@
       <p></p>
       <a href="{{route('home')}}" class="btn btn-primary btn-sm">Volver al menu</a>
       <p></p>
-      @if(\Gate::allows('admin'))
+      {{-- @can('admin', $user)
       <form action="{{route('users.edit',$user->id)}}" method="GET">
         <input type="submit" class="btn btn-warning btn-sm" value="Editar">
         @csrf
       </form>
+      <p></p>
+      <form action="{{route('users.destroy',$user->id)}}" method="POST">
+        <input type="submit" class="btn btn-danger btn-sm" value="Eliminar">
+        @method('DELETE')
+        @csrf
+      </form>
+      @endcan --}}
+      @if(\Gate::allows('admin'))
+      {{-- <form action="{{route('users.edit',$user->id)}}" method="GET">
+        <input type="submit" class="btn btn-warning btn-sm" value="Editar">
+        @csrf
+      </form> --}}
       <p></p>
       <form action="{{route('users.destroy',$user->id)}}" method="POST">
         <input type="submit" class="btn btn-danger btn-sm" value="Eliminar">
@@ -55,6 +67,16 @@
       @if (count($user->comentarios))
         @foreach ($user->comentarios as $comentario)
           <a href="{{route('users.show',$comentario->user->id)}}">{{$comentario->user->name}}</a>
+          @can('accionComentario', $comentario)
+                <form action="{{route('comentarios.edit',$comentario->id)}}" method="GET" class="float-right">
+                    <input type="submit" class="btn btn-warning btn-sm" value="Editar">
+                </form>
+                <form action="{{route('comentarios.destroy',$comentario->id)}}" method="POST" class="float-right">
+                    <input type="submit" class="btn btn-danger btn-sm" value="Eliminar">
+                    @method('DELETE')
+                    @csrf
+                </form>
+            @endcan
           <p>{{$comentario->contenido}}</p>
         @endforeach
       @else
@@ -66,7 +88,7 @@
       <form action="{{route('comentarios.storeUser',$user->id)}}" method="POST">
         @csrf
         <div class="form-group">
-          <label for="comentario" style="font-weight: bold;">Comentario</label>
+          <label for="comentario" style="font-weight: bold;">Comentar</label>
           <textarea class="form-control" id="comentario" name="contenido" rows="5"></textarea>
         </div>
         <div class="form-group">

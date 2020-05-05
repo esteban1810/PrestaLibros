@@ -20,7 +20,7 @@ class CreateComentariosTable extends Migration
             $table->unsignedBigInteger('comentario_id');
             $table->string('comentario_type');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

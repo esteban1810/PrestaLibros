@@ -42,7 +42,7 @@
 
         <div>
             <h2 class="apartados">Género</h2>
-            <p>{{$libro->genero}}</p>
+            <p>{{$libro->genero->nombre}}</p>
         </div>
 
         <div>
@@ -87,6 +87,16 @@
         @if (count($libro->comentarios))
             @foreach ($libro->comentarios as $comentario)
                 <a href="{{route('users.show',$comentario->user->id)}}">{{$comentario->user->name}}</a>
+                    @can('accionComentario', $comentario)
+                        <form action="{{route('comentarios.edit',$comentario->id)}}" method="GET" class="float-right">
+                            <input type="submit" class="btn btn-warning btn-sm" value="Editar">
+                        </form>
+                        <form action="{{route('comentarios.destroy',$comentario->id)}}" method="POST" class="float-right">
+                            <input type="submit" class="btn btn-danger btn-sm" value="Eliminar">
+                            @method('DELETE')
+                            @csrf
+                        </form>
+                    @endcan
                 <p>
                     {{$comentario->contenido}}
                 </p>
@@ -98,7 +108,7 @@
     <br>
     <form action="{{route('comentarios.storeLibro',$libro->id)}}" method="POST">
         <div class="form-group">
-            <label for="comentario" style="font-weight: bold;">Comentario</label>
+            <label for="comentario" style="font-weight: bold;">Comentar</label>
             <textarea class="form-control" id="comentario" name="contenido" rows="5"></textarea>
         </div>
         @csrf

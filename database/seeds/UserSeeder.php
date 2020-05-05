@@ -12,12 +12,13 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        User::create([
+            'name' => 'admin',
+            'email' => 'admin@admin.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('admin'), // password
+            'remember_token' => Str::random(10)
+        ]);
         factory(User::class,20)->create();
-        /*
-        ->each(function($user){
-            dd(factory(App\Libro::class)->make());
-            $user->libros()->save(factory(App\Libro::class)->make());
-        });
-        */
     }
 }

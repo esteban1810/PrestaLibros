@@ -33,6 +33,4 @@ Route::resource('/libros', 'LibroController');
 
 Route::resource('/users', 'UserController');
 
-Route::resource('/comentarios', 'ComentarioController');
-
 Route::resource('/generos', 'GeneroController');

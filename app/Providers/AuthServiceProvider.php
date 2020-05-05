@@ -1,9 +1,11 @@
 <?php
-
 namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+
+use App\Comentario;
+use App\Policies\ComentarioPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -14,6 +16,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Model' => 'App\Policies\ModelPolicy',
+        Comentario::class => ComentarioPolicy::class
     ];
 
     /**
@@ -31,6 +34,10 @@ class AuthServiceProvider extends ServiceProvider
             }else{
                 return false;
             }
+        });
+
+        Gate::define('accionComentario', function ($user, $comentario) {
+            return $user->id === $comentario->user_id;
         });
     }
 }

@@ -8,6 +8,9 @@ use App\User;
 
 class UserController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -79,6 +82,7 @@ class UserController extends Controller
 
         return route('home');
     }
+
     /*
      *
      * @param  int  $id
@@ -88,6 +92,6 @@ class UserController extends Controller
     {
         User::findOrFail($id)->delete();
 
-        return route('home');
+        return $this->index();
     }
 }

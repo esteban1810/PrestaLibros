@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 use App\User;
+use App\Genero;
+use App\Comentario;
 
 class Libro extends Model
 {
@@ -14,6 +16,7 @@ class Libro extends Model
         'editorial',
         'edicion',
         'anio',
+        'genero_id',
         'descripcion'
     ];
 
@@ -22,6 +25,10 @@ class Libro extends Model
     }
 
     public function users(){
-        return $this->belongsToMany(user::class);
+        return $this->belongsToMany(User::class);
+    }
+
+    public function genero(){
+        return $this->belongsTo(Genero::class);
     }
 }

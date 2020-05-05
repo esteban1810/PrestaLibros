@@ -27,7 +27,7 @@
             @foreach ($libros as $libro)
                 <tr>
                     {{-- <th scope="row"><a href="{{route('libros.show',$libro->id)}}">{{$libro->id}}</a></th> --}}
-                    <td>{{$libro->genero_id}}</td>
+                    <td>{{$libro->genero->nombre}}</td>
                     <td>{{$libro->titulo}}</td>
                     <td>{{$libro->autor}}</td>
                     {{-- <td>{{$libro->editorial}}</td>

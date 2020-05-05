@@ -19,8 +19,8 @@ class CreateLibroUserTable extends Migration
             $table->unsignedBigInteger('libro_id');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('libro_id')->references('id')->on('libros');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('libro_id')->references('id')->on('libros')->onDelete('cascade');
         });
     }
 

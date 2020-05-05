@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 
 class LibroController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +20,6 @@ class LibroController extends Controller
     public function index()
     {
         $libros = Libro::paginate(10);
-        //$libros = Libro::with('autor, titulo, anio, descripcion')->paginate(5);
 
         return view('libros.index', compact('libros'));
     }
@@ -41,6 +43,7 @@ class LibroController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'genero_id' => 'required',
             'autor' => 'required|max:255',
             'titulo' => 'required',
             'editorial' => 'required',
@@ -57,13 +60,6 @@ class LibroController extends Controller
         ]);
 
         return $this->index();
-
-        /*return redirect()->route('libros.index')
-        ->with([
-            'alerta' => 'Libro creado con éxito',
-            'clase-alerta' => 'alert-success'
-            ]);*/
-
     }
 
     /**
