@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Genero;
-use App\User;
 use Illuminate\Http\Request;
 
 class GeneroController extends Controller

@@ -41,10 +41,15 @@ class ComentarioController extends Controller
     //     var_dump($request->titulo);
     //     return;
     //     Comentario::create($request->all());
-        
+
     // }
 
     public function storeLibro(Request $request, $id){
+
+        $request->validate([
+            'contenido' => 'required|max:255',
+        ]);
+
         $libro = Libro::findOrFail($id);
 
         $libro->comentarios()->create([
@@ -58,8 +63,13 @@ class ComentarioController extends Controller
     }
 
     public function storeUser(Request $request, $id){
+
+        $request->validate([
+            'contenido' => 'required|max:255',
+        ]);
+
         $user = User::findOrFail($id);
-        
+
         $user->comentarios()->create([
             'contenido' => $request->contenido,
             'user_id' => \Auth::id(),

@@ -40,6 +40,15 @@ class LibroController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'autor' => 'required|max:255',
+            'titulo' => 'required',
+            'editorial' => 'required',
+            'edicion' => 'required|int',
+            'anio' => 'required|max:2020',
+            'descripcion' => 'required|max:255'
+        ]);
+
         $id = Libro::create($request->all())->id;
 
         DB::table('libro_user')->insert([
@@ -90,6 +99,15 @@ class LibroController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'autor' => 'required|max:255',
+            'titulo' => 'required',
+            'editorial' => 'required',
+            'edicion' => 'required|int',
+            'anio' => 'required|max:2020',
+            'descripcion' => 'required|max:255'
+        ]);
+
         Libro::findOrFail($id)->update($request->all());
 
         return $this->show($id);
