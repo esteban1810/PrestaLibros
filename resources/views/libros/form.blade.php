@@ -36,12 +36,18 @@
             <label for="anio">Año</label>
             <input class="form-control" type="text" name="anio" value="{{$libro->anio}}">
         </div>
+        {{--
         <div class="form-group col-md-12">
-        <label for="genero">Genero</label>
-        <input class="form-control" type="select" name="genero" value="{{$libro->genero}}">
-        </div>
-        {{--{!! Form::select('genero_id', $generos ,null, ['class' => 'form-control']) !!}--}}
+            <label for="genero">Genero</label>
+            <select class="form-control">
 
+                    @foreach($genero as $item)
+
+                        <option>{{$item->nombre}}</option>
+                    @endforeach
+            </select>
+        </div>
+        --}}
         <div class="form-group col-md-12">
             <label for="descripcion">Descripcion</label>
             <textarea class="form-control" rows="3" name="descripcion">{{$libro->descripcion}}</textarea>

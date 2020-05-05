@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Genero;
+use App\User;
 use Illuminate\Http\Request;
 
 class GeneroController extends Controller
@@ -13,7 +15,8 @@ class GeneroController extends Controller
      */
     public function index()
     {
-        //
+        $genero = Genero::all();
+        return view('generos.index',compact('genero'));
     }
 
     /**
@@ -45,7 +48,8 @@ class GeneroController extends Controller
      */
     public function show($id)
     {
-        //
+        $genero = Genero::findOrFail($id);
+        return view('generos.show',compact('genero'));
     }
 
     /**
@@ -56,7 +60,8 @@ class GeneroController extends Controller
      */
     public function edit($id)
     {
-        //
+        $genero = Genero::findOrFail($id);
+        return view('generos.form',compact('genero'));
     }
 
     /**
