@@ -1,7 +1,7 @@
 @extends('libros.master')
 
 @section('contenido')
-<div class="card-header">generos</div>
+<div class="card-header">Lista de Generos</div>
 
 <table class="table">
     <thead>

@@ -37,7 +37,7 @@
           <h6 class="collapse-header">¿Qué hay de nuevo viejo?:</h6>
         <a class="collapse-item" href="{{ route('libros.index') }}">Ver lista Libros</a>
         <a class="collapse-item" href="{{ route('users.index') }}">Ver lista Usuarios</a>
-        <a class="collapse-item" href="{{ route('users.show', $user ?? '')}}">Ver Perfil</a>
+        <a class="collapse-item" href="{{ route('users.show',\Auth::id())}}">Ver Perfil</a>
         </div>
       </div>
     </li>
