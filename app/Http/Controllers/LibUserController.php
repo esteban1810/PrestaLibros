@@ -10,6 +10,10 @@ use App\Libro;
 
 class LibUserController extends Controller
 {
+    protected $fillable = [
+        'user_id',
+        'libro_id'
+    ]
     public function agregar($id){
         
         $user = User::findOrFail(\Auth::id());

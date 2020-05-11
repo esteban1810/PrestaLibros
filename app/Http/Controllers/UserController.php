@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\LibUser;
 use App\User;
+use App\Comentario;
 
 class UserController extends Controller
 {
@@ -19,8 +20,9 @@ class UserController extends Controller
     public function index()
     {
         $users = User::paginate(12);
-
-        return view('users.index',compact('users'));
+        //paginate(12);
+        $visible = false;
+        return view('users.index',compact(['users','visible']));
     }
 
     /**
@@ -52,9 +54,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
+        $visible = false;
+        $user = User::with(['comentarios','libros'])->firstWhere('id',$id);
 
-        return view('users.show', compact('user'));
+        return view('users.show', compact(['user','visible']));
     }
 
     /**
@@ -90,8 +93,48 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        Comentario::commentsUser($id)->delete();
+        Comentario::where('user_id',$id)->delete();
         User::findOrFail($id)->delete();
 
         return $this->index();
+    }
+
+    public function eliminar($id){
+        LibUser::where('user_id',$id)->delete();
+        Comentario::commentsUser($id)->forceDelete();
+        Comentario::onlyTrashed()->where('user_id',$id)->forceDelete();
+        User::onlyTrashed()->where('id',$id)->forceDelete();
+        
+        return redirect()->route('users.indexElim')
+        ->with([
+            'alerta' => 'Usuario eliminado permanentemente',
+            'clase-alerta' => 'alert-danger'
+            ]);
+    }
+
+    public function restaurar($id){
+        Comentario::commentsUser($id)->restore();
+        Comentario::onlyTrashed()->where('user_id',$id)->restore();
+        User::onlyTrashed()->where('id',$id)->restore();
+
+        return redirect()->route('users.indexElim')
+        ->with([
+            'alerta' => 'Usuario restaurado con éxito',
+            'clase-alerta' => 'alert-success'
+            ]);
+    }
+
+    public function showElim($id)
+    {
+        $user = User::onlyTrashed()->with(['comentarios','libros'])->firstWhere('id',$id);
+        $visible = true;
+        return view('users.show',compact(['user','visible']));
+    }
+
+    public function indexElim(){
+        $users = User::onlyTrashed()->get();
+        $visible = true;
+        return view('users.index', compact(['users','visible']));
     }
 }

@@ -68,7 +68,7 @@ class ComentarioController extends Controller
             'contenido' => $request->contenido,
             'user_id' => \Auth::id(),
             'comentario_id' => $id,
-            'comenatario_type' => 'App\User'
+            'comentario_type' => 'App\User'
         ]);
 
         return back();

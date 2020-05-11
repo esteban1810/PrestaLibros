@@ -19,6 +19,7 @@ class CreateComentariosTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('comentario_id');
             $table->string('comentario_type');
+            $table->softDeletes();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

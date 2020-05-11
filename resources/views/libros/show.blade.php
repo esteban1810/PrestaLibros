@@ -5,30 +5,43 @@
 <div class="card-body">
     <div class="float-right">
 
-        <a href="{{route('libros.index')}}" class="btn btn-primary btn-sm">Ver Lista</a>
+        <a href="{{route('libros.index')}}" class="btn btn-primary btn-sm">Volver</a>
         <p></p>
-        @if ($libro->users->find(\Auth::id()))
-            <form action="{{route('LibUser.quitar',$libro->id)}}" method="POST">
-                <input type="submit" value="Quitar de mi biblioteca" class="btn btn-danger btn-sm">
+        @if ($visible)
+            <form action="{{route('libros.restaurar',$libro->id)}}" method="GET">
+                <input type="submit" value="Restaurar" class="btn btn-success btn-sm">
+                @csrf
+            </form>
+            <p></p>
+            <form action="{{route('libros.eliminar',$libro->id)}}" method="POST">
+                <input type="submit" class="btn btn-danger btn-sm" value="Eliminar">
+                @method('DELETE')
                 @csrf
             </form>
         @else
-            <form action="{{route('libUser.agregar',$libro->id)}}" method="POST">
-                <input type="submit" value="Añadir a mi biblioteca" class="btn btn-success btn-sm">
-                @csrf
-            </form>
-        @endif
-        <p></p>
-        @if(\Gate::allows('admin'))
-        <form action="{{route('libros.edit',$libro->id)}}" method="GET">
-            <input type="submit" class="btn btn-warning btn-sm" value="Editar">
-        </form>
-        <p></p>
-        <form action="{{route('libros.destroy',$libro->id)}}" method="POST">
-            <input type="submit" class="btn btn-danger btn-sm" value="Eliminar">
-            @method('DELETE')
-            @csrf
-        </form>
+            @if ($libro->users->find(\Auth::id()))
+                <form action="{{route('LibUser.quitar',$libro->id)}}" method="POST">
+                    <input type="submit" value="Quitar de mi biblioteca" class="btn btn-danger btn-sm">
+                    @csrf
+                </form>
+            @else
+                <form action="{{route('libUser.agregar',$libro->id)}}" method="POST">
+                    <input type="submit" value="Añadir a mi biblioteca" class="btn btn-success btn-sm">
+                    @csrf
+                </form>
+            @endif
+            <p></p>
+            @if(\Gate::allows('admin'))
+                <form action="{{route('libros.edit',$libro->id)}}" method="GET">
+                    <input type="submit" class="btn btn-warning btn-sm" value="Editar">
+                </form>
+                <p></p>
+                <form action="{{route('libros.destroy',$libro->id)}}" method="POST">
+                    <input type="submit" class="btn btn-danger btn-sm" value="Eliminar">
+                    @method('DELETE')
+                    @csrf
+                </form>
+            @endif
         @endif
     </div>
 

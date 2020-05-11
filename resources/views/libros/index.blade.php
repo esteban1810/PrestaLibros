@@ -5,20 +5,24 @@
 
 <div class="card-body">
     <div>
-        <a href="{{route('libros.create')}}" class="btn btn-primary btn-md">Nuevo</a>
+        @if ($visible)
+            <a href="{{route('libros.index')}}" class="btn btn-primary btn-md">Libros visibles</a>
+        @else
+            <a href="{{route('libros.create')}}" class="btn btn-primary btn-md">Nuevo</a>
+            <a href="{{route('libros.indexElim')}}" class="btn btn-primary btn-md">Libros Borrados</a>
+        @endif
     </div>
-   <br>
-    {{$libros->links()}}
+    <br>
+    @if (!$visible)
+        {{$libros->links()}}
+    @endif
+    
     <table class="table">
         <thead>
             <tr>
-                {{-- <th scope="col">#</th> --}}
                 <th scope="col">Género</th>
                 <th scope="col">Titulo</th>
                 <th scope="col">Autor</th>
-                {{-- <th scope="col">editorial</th>
-                <th scope="col">edicion</th>
-                <th scope="col">año</th> --}}
                 <th scope="col">Descripción</th>
                 <th scope="col">Operaciones</th>
             </tr>
@@ -26,18 +30,17 @@
         <tbody>
             @foreach ($libros as $libro)
                 <tr>
-                    {{-- <th scope="row"><a href="{{route('libros.show',$libro->id)}}">{{$libro->id}}</a></th> --}}
                     <td>{{$libro->genero->nombre}}</td>
                     <td>{{$libro->titulo}}</td>
                     <td>{{$libro->autor}}</td>
-                    {{-- <td>{{$libro->editorial}}</td>
-                    <td>{{$libro->edicion}}</td>
-                    <td>{{$libro->anio}}</td> --}}
                     <td>{{$libro->descripcion}}</td>
-
                     <td>
                         <div>
-                            <a href="{{route('libros.show',$libro->id)}}" class="btn btn-primary btn-sm">Detalles</a>
+                            @if ($visible)
+                                <a href="{{route('libros.showElim',$libro->id)}}" class="btn btn-primary btn-sm">Detalles</a>
+                            @else
+                                <a href="{{route('libros.show',$libro->id)}}" class="btn btn-primary btn-sm">Detalles</a>
+                            @endif
                         </div>
                     </td>
                 </tr>
