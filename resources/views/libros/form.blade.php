@@ -18,28 +18,32 @@
     @endif
         <div class="form-group col-md-12">
             <label for="autor">Autor</label>
-            <input class="form-control" type="text" name="autor" value="{{$libro->autor}}">
+            <input class="form-control" type="text" name="autor" value="{{$libro->autor}}"  placeholder="Introduce el Autor" required>
         </div>
         <div class="form-group col-md-12">
             <label for="titulo">Titulo</label>
-            <input class="form-control" type="text" name="titulo" value="{{$libro->titulo}}">
+            <input class="form-control" type="text" name="titulo" value="{{$libro->titulo}}" placeholder="Introduce el Titulo" required>
         </div>
         <div class="form-group col-md-12">
             <label for="editorial">Editorial</label>
-            <input class="form-control" type="text" name="editorial" value="{{$libro->editorial}}">
+            <input class="form-control" type="text" name="editorial" value="{{$libro->editorial}}" placeholder="Introduce la Editorial" required>
         </div>
         <div class="form-group col-md-12">
             <label for="edicion">Edicion</label>
-            <input class="form-control" type="text" name="edicion" value="{{$libro->edicion}}">
+            <input class="form-control" type="text" name="edicion" value="{{$libro->edicion}}" placeholder="Introduce la Edición" required>
         </div>
         <div class="form-group col-md-12">
             <label for="anio">Año</label>
-            <input class="form-control" type="text" name="anio" value="{{$libro->anio}}">
+            <input class="form-control" type="text" name="anio" value="{{$libro->anio}}" placeholder="Introduce el Año" required>
         </div>
         <div class="form-group col-md-12">
             <label for="genero">Genero</label>
             <select class="form-control" name="genero_id">
+<<<<<<< HEAD
                     {{-- <option value="">Selecciona</option> --}}
+=======
+                    {{--<option value="">Selecciona</option>--}}
+>>>>>>> master
                     @if (isset($libro->genero_id))
                         <option value="{{$libro->genero_id}}">{{$libro->genero->nombre}}</option>
                         @foreach(App\Genero::all() as $genero)
@@ -53,12 +57,15 @@
                             <option value="{{$genero->id}}">{{$genero->nombre}}</option>
                         @endforeach
                     @endif
+<<<<<<< HEAD
                     
+=======
+>>>>>>> master
             </select>
         </div>
         <div class="form-group col-md-12">
             <label for="descripcion">Descripcion</label>
-            <textarea class="form-control" rows="3" name="descripcion">{{$libro->descripcion}}</textarea>
+            <textarea class="form-control" rows="3" name="descripcion" placeholder="Introduce una breve descripción" value="{{$libro->descripcion}}" required></textarea>
         </div>
         <div class="form-group col-md-12">
             <input type="submit" class="btn btn-primary" value="Aceptar">
