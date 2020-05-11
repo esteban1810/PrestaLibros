@@ -39,6 +39,7 @@
         <div class="form-group col-md-12">
             <label for="genero">Genero</label>
             <select class="form-control" name="genero_id">
+<<<<<<< HEAD
                     {{--<option value="">Selecciona</option>--}}
                     @if (isset($libro->genero_id))
                         <option value="{{$libro->genero_id}}">{{$libro->genero->nombre}}</option>
@@ -53,6 +54,15 @@
                             <option value="{{$genero->id}}">{{$genero->nombre}}</option>
                         @endforeach
                     @endif
+=======
+                    {{-- <option value="">Selecciona</option> --}}
+                    <option value="{{$libro->genero_id}}">{{$libro->genero->nombre}}</option>
+                    @foreach(App\Genero::all() as $genero)
+                        @if ($libro->genero_id!=$genero->id)
+                            <option value="{{$genero->id}}">{{$genero->nombre}}</option>
+                        @endif
+                    @endforeach
+>>>>>>> master
             </select>
         </div>
         <div class="form-group col-md-12">
