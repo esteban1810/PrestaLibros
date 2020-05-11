@@ -44,11 +44,11 @@ class ComentarioController extends Controller
     //     var_dump($request->titulo);
     //     return;
     //     Comentario::create($request->all());
-        
+
     // }
 
     public function storeLibro(Request $request, $id){
-        
+
         $libro = Libro::findOrFail($id);
 
         $libro->comentarios()->create([
@@ -63,12 +63,12 @@ class ComentarioController extends Controller
 
     public function storeUser(Request $request, $id){
         $user = User::findOrFail($id);
-        
+
         $user->comentarios()->create([
             'contenido' => $request->contenido,
             'user_id' => \Auth::id(),
             'comentario_id' => $id,
-            'comenatario_type' => 'App\User'
+            'comentario_type' => 'App\User'
         ]);
 
         return back();
@@ -82,7 +82,7 @@ class ComentarioController extends Controller
      */
     public function show($id)
     {
-        
+
     }
 
     /**
@@ -94,7 +94,7 @@ class ComentarioController extends Controller
     public function edit($id)
     {
         $comentario = Comentario::findOrFail($id);
-        
+
         $this->authorize('acceso',$comentario);
 
         return view('comentarios.show',compact('comentario'));
@@ -113,7 +113,7 @@ class ComentarioController extends Controller
         $this->authorize('acceso',$comentario);
         $comentario->update($request->all());
         // $comentario = Comentario::findOrFail($id)->update($request->all());
-    
+
         return redirect('/libros');
     }
 
