@@ -11,7 +11,7 @@ class ComentarioSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Comentario::class, 500)->create();
+        factory(App\Comentario::class, 100)->create();
         // ->each(function ($comentario) {
         //     $comentario->user()->save(factory(App\User::class)->make());
         // });

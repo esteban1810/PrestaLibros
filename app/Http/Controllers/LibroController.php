@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Comentario;
 use App\Libro;
+use App\LibUser;
 use DB;
 
 use Illuminate\Http\Request;
@@ -19,9 +21,9 @@ class LibroController extends Controller
      */
     public function index()
     {
-        $libros = Libro::paginate(10);
-
-        return view('libros.index', compact('libros'));
+        $libros = Libro::with('genero')->paginate(10);
+        $visible=false;
+        return view('libros.index', compact(['libros','visible']));
     }
 
     /**
@@ -76,7 +78,8 @@ class LibroController extends Controller
     public function show($id)
     {
         $libro = Libro::findOrFail($id);
-        return view('libros.show',compact('libro'));
+        $visible = false;
+        return view('libros.show',compact(['libro','visible']));
     }
 
     /**
@@ -127,14 +130,50 @@ class LibroController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('libro_user')->where('libro_id',$id)->delete();
+        LibUser::where('libro_id',$id)->delete();
+        Comentario::commentsLib($id)->delete();
         Libro::findOrFail($id)->delete();
 
-        //return $this->index()
         return redirect()->route('libros.index')
         ->with([
             'alerta' => 'Libro eliminado',
             'clase-alerta' => 'alert-danger'
             ]);
+    }
+
+    public function eliminar($id){
+        LibUser::where('libro_id',$id)->forceDelete();
+        Comentario::commentsLib($id)->forceDelete();
+        Libro::where('id',$id)->forceDelete();
+        
+        return redirect()->route('libros.indexElim')
+        ->with([
+            'alerta' => 'Libro eliminado permanentemente',
+            'clase-alerta' => 'alert-danger'
+            ]);
+    }
+
+    public function restaurar($id){
+        Comentario::commentsLib($id)->restore();
+        Libro::where('id',$id)->restore();
+
+        return redirect()->route('libros.indexElim')
+        ->with([
+            'alerta' => 'Libro restaurado con éxito',
+            'clase-alerta' => 'alert-success'
+            ]);
+    }
+
+    public function showElim($id)
+    {
+        $libro = Libro::onlyTrashed()->with(['comentarios','users'])->firstWhere('id',$id);
+        $visible = true;
+        return view('libros.show',compact(['libro','visible']));
+    }
+
+    public function indexElim(){
+        $libros = Libro::onlyTrashed()->get();
+        $visible = true;
+        return view('libros.index', compact(['libros','visible']));
     }
 }

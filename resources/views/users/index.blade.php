@@ -12,9 +12,18 @@
                     <div class="card-body">
                         <div>
                             <a href="{{route('home')}}" class="btn btn-primary btn-sm">Volver al menu</a>
+                            @if ($visible)
+                                <a href="{{route('users.index')}}" class="btn btn-primary btn-sm">Usuarios Visibles</a>
+                            @else
+                                <a href="{{route('users.indexElim')}}" class="btn btn-primary btn-sm">Usuarios Eliminados</a>
+                                <p></p>
+                                <div>
+                                    {{$users->links()}}
+                                </div>
+                            @endif
                         </div>
+                        
                         <br>
-                        {{$users->links()}}
                         <table class="table">
                             <thead>
                                 <tr>
@@ -31,11 +40,19 @@
                                         <th scope="row">{{$user->id}}</th>
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
-                                        <td>
-                                            <form action="{{route('users.show',$user->id)}}" method="GET">
-                                                <input type="submit" class="btn btn-primary" value="Ver perfil">
-                                            </form>
-                                        </td>
+                                        @if ($visible)
+                                            <td>
+                                                <form action="{{route('users.showElim',$user->id)}}" method="GET">
+                                                    <input type="submit" class="btn btn-primary" value="Ver perfil">
+                                                </form>
+                                            </td>
+                                        @else
+                                            <td>
+                                                <form action="{{route('users.show',$user->id)}}" method="GET">
+                                                    <input type="submit" class="btn btn-primary" value="Ver perfil">
+                                                </form>
+                                            </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>

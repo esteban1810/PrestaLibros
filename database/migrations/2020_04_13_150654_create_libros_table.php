@@ -22,6 +22,7 @@ class CreateLibrosTable extends Migration
             $table->string('edicion');
             $table->Integer('anio');
             $table->string('descripcion');
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('genero_id')->references('id')->on('generos');

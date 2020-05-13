@@ -10,15 +10,15 @@ $factory->define(Comentario::class, function (Faker $faker) {
     if(rand(1,2)==1){
         return [
             'contenido' => $faker->realText($maxNbChars = 200, $indexSize = 2),
-            'user_id' => $faker->numberBetween($min=1,count(App\User::all())),
-            'comentario_id' => $faker->numberBetween($min=1,count(App\User::all())),
+            'user_id' => $faker->numberBetween($min=2,count(App\User::all())),
+            'comentario_id' => $faker->numberBetween($min=2,count(App\User::all())),
             'comentario_type' => 'App\User'
         ];
     } else {
         return [
             'contenido' => $faker->realText($maxNbChars = 200, $indexSize = 2),
-            'user_id' => $faker->numberBetween($min=1,count(App\User::all())),
-            'comentario_id' => $faker->numberBetween($min=1,count(App\Libro::all())),
+            'user_id' => $faker->numberBetween($min=2,count(App\User::all())),
+            'comentario_id' => $faker->numberBetween($min=2,count(App\Libro::all())),
             'comentario_type' => 'App\Libro'
         ];
     }
