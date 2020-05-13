@@ -34,3 +34,18 @@ Route::resource('/libros', 'LibroController');
 Route::resource('/users', 'UserController');
 
 Route::resource('/generos', 'GeneroController');
+
+//Rutas para listado y carga de archivos
+Route::get('archivo', function() {
+    $archivos = App\Archivos::all();
+    return view('archivos.index', compact('archivos'));
+});
+Route::get('archivo/formulario', function() {
+    return view('archivos.form');
+});
+
+Route::post('archivo/cargar', 'ArchivoController@upload')->name('archivo.upload');
+
+Route::get('archivo/{archivo}/descargar', 'ArchivoController@download')->name('archivo.download');
+
+Route::post('archivo/{archivo}/borrar', 'ArchivoController@delete')->name('archivo.delete');
