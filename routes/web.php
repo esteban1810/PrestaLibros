@@ -33,7 +33,6 @@ Route::resource('/users', 'UserController');
 
 Route::resource('/generos', 'GeneroController');
 
-<<<<<<< HEAD
 //Rutas para listado y carga de archivos
 Route::get('archivo', function() {
     $archivos = App\Archivos::all();
@@ -43,12 +42,13 @@ Route::get('archivo/formulario', function() {
     return view('archivos.form');
 });
 
-Route::post('archivo/cargar', 'ArchivoController@upload')->name('archivo.upload');
+Route::post('archivo/cargar', 'ArchivosController@upload')->name('archivos.upload');
 
-Route::get('archivo/{archivo}/descargar', 'ArchivoController@download')->name('archivo.download');
+Route::get('archivo/{archivo}/descargar', 'ArchivosController@download')->name('archivos.download');
 
-Route::post('archivo/{archivo}/borrar', 'ArchivoController@delete')->name('archivo.delete');
-=======
+Route::post('archivo/{archivo}/borrar', 'ArchivosController@delete')->name('archivos.delete');
+
+
 Route::get('/librosElim', 'LibroController@indexElim')->name('libros.indexElim');
 Route::get('/libroShowElim/{libro}', 'LibroController@showElim')->name('libros.showElim');
 Route::delete('/libroEliminar/{libro}', 'LibroController@eliminar')->name('libros.eliminar');
@@ -58,4 +58,3 @@ Route::get('/usersElim', 'UserController@indexElim')->name('users.indexElim');
 Route::get('/usersElim/{libro}/show', 'UserController@showElim')->name('users.showElim');
 Route::delete('/usersElim/{libro}/elim', 'UserController@eliminar')->name('users.eliminar');
 Route::get('/usersElim/{libro}/rest', 'UserController@restaurar')->name('users.restaurar');
->>>>>>> master

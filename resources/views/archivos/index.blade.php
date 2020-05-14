@@ -1,4 +1,6 @@
 @extends('libros.master')
+
+@section('contenido')
 <div class="card">
     <div class="card-header">Archivos Cargados</div>
     <div class="card-body">
@@ -14,11 +16,11 @@
             <td>{{ $archivo->nombre_original }}</td>
             <td>{{ $archivo->tamaño }}</td>
             <td>
-              <a href="{{ route('archivo.download', $archivo->id) }}" class="btn btn-sm btn-success">Descargar</a>
+              <a href="{{ route('archivos.download', $archivo->id) }}" class="btn btn-sm btn-success">Descargar</a>
             </td>
             <td>
               <!-- Formulario para eliminar archivo -->
-              {!! Form::open(['route' => ['archivo.delete', $archivo->id]]) !!}
+              {!! Form::open(['route' => ['archivos.delete', $archivo->id]]) !!}
               <button type="submit" class="btn btn-sm btn-danger">Borrar</button>
               {!! Form::close() !!}
             </td>
@@ -28,3 +30,4 @@
       </table>
     </div>
   </div>
+  @endsection

@@ -54,7 +54,8 @@ class ArchivosController extends Controller
      */
     public function index()
     {
-        //
+        $archivo = Archivos::all();
+        return view('archivos.index',compact('archivos'));
     }
 
     /**
@@ -64,7 +65,7 @@ class ArchivosController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -86,7 +87,8 @@ class ArchivosController extends Controller
      */
     public function show(Archivos $archivos)
     {
-        //
+        $archivo = Archivos::findOrFail($archivos);
+        return view('archivos.form',compact('archivos'));
     }
 
     /**

@@ -9,7 +9,7 @@ use App\User;
 class Comentario extends Model
 {
     use SoftDeletes;
-    
+
     protected $fillable = [
         'contenido',
         'user_id',
@@ -26,8 +26,11 @@ class Comentario extends Model
     }
 
     public function scopeLibroElim()
-    
-    
+    {
+
+    }
+
+
     public function comentario(){
         return $this->morphTo();
     }
