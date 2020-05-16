@@ -2,22 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/home', 'HomeController@index')->name('home');
-Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+Auth::routes(['verify' => true]);
 
 Route::post('/quita/{libro}', 'LibUserController@quitar')->name('LibUser.quitar');
 Route::post('/agregar/{libro}', 'LibUserController@agregar')->name('libUser.agregar');
@@ -42,3 +32,9 @@ Route::get('/usersElim', 'UserController@indexElim')->name('users.indexElim');
 Route::get('/usersElim/{libro}/show', 'UserController@showElim')->name('users.showElim');
 Route::delete('/usersElim/{libro}/elim', 'UserController@eliminar')->name('users.eliminar');
 Route::get('/usersElim/{libro}/rest', 'UserController@restaurar')->name('users.restaurar');
+
+//Route::resource('/messages', 'MessageController');
+
+Route::get('/messages/{libro}/{user}', 'MessageController@solicitud')->name('messages.solicitud');
+
+Route::post('/messagesC/{libro}/{user}', 'MessageController@recibo')->name('messages.recibo');

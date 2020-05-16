@@ -12,4 +12,5 @@ class LibUser extends Model
         'user_id',
         'libro_id'
     ];
+    
 }

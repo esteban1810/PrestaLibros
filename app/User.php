@@ -11,7 +11,7 @@ use App\Comentario;
 use App\Libro;
 use App\Genero;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
     use SoftDeletes;

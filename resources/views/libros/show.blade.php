@@ -83,11 +83,31 @@
     <div>
         <h2 class="apartados">Personas que tienen el libro</h2>
         @if (count($libro->users))
-            <ul class="list-group">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+                @foreach ($libro->users as $user)
+                    <tr>
+                        <td>
+                            <a href="{{route('users.show',$user->id)}}">{{$user->name}}</a>
+                        </td>
+                        <td>
+                            <a href="{{route('messages.solicitud',['libro'=>$libro->id,'user'=>$user->id])}}" class="btn btn-primary btn-sm">Enviar Solicitud</a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+          </table>
+            {{-- <ul class="list-group">
                 @foreach ($libro->users as $user)
                     <li class="list-group-item"><a href="{{route('users.show',$user->id)}}">{{$user->name}}</a></li>
                 @endforeach
-            </ul>
+            </ul> --}}
         @else
         <p>Nadie lo tiene</p>
         @endif

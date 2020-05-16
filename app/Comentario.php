@@ -24,9 +24,6 @@ class Comentario extends Model
     public function scopeCommentsUser($query,$id){
         return $query->where('comentario_type','=','App\User')->where('comentario_id','=',$id);
     }
-
-    public function scopeLibroElim()
-    
     
     public function comentario(){
         return $this->morphTo();
