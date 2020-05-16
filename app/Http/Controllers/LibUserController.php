@@ -14,9 +14,12 @@ class LibUserController extends Controller
         'user_id',
         'libro_id'
     ];
+<<<<<<< HEAD
     
+=======
+>>>>>>> master
     public function agregar($id){
-        
+
         $user = User::findOrFail(\Auth::id());
 
         $user->libros()->sync($id);
@@ -25,7 +28,7 @@ class LibUserController extends Controller
     }
 
     public function quitar($id){
-        
+
         $user = User::findOrFail(\Auth::id());
 
         $user->libros()->detach($id);

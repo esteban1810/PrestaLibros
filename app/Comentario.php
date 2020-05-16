@@ -9,7 +9,7 @@ use App\User;
 class Comentario extends Model
 {
     use SoftDeletes;
-    
+
     protected $fillable = [
         'contenido',
         'user_id',
@@ -24,7 +24,17 @@ class Comentario extends Model
     public function scopeCommentsUser($query,$id){
         return $query->where('comentario_type','=','App\User')->where('comentario_id','=',$id);
     }
+<<<<<<< HEAD
     
+=======
+
+    public function scopeLibroElim()
+    {
+
+    }
+
+
+>>>>>>> master
     public function comentario(){
         return $this->morphTo();
     }
