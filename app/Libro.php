@@ -14,6 +14,7 @@ class Libro extends Model
     use SoftDeletes;
     
     protected $fillable = [
+        'portada',
         'autor',
         'titulo',
         'editorial',

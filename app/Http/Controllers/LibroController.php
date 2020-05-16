@@ -54,14 +54,18 @@ class LibroController extends Controller
             'descripcion' => 'required|max:255'
         ]);
 
-        $id = Libro::create($request->all())->id;
+        $libro = (new Libro)->fill($request->all());
 
-        DB::table('libro_user')->insert([
-            'user_id' => \Auth::id(),
-            'libro_id' => $id,
-        ]);
+        if($request->hasFile('portada')){
+            $libro->portada = $request->file('portada')->store('public');
+        } else {
+            $libro->portada = "default.jpg";
+        }
 
-        //return $this->index()
+        $libro->save();
+
+        $libro->users()->attach(\Auth::id());
+
         return redirect()->route('libros.index')
         ->with([
             'alerta' => 'Libro creado con éxito',
@@ -111,10 +115,17 @@ class LibroController extends Controller
             'anio' => 'required|max:2020',
             'descripcion' => 'required|max:255'
         ]);
+        
+        $libro = Libro::findOrFail($id)->fill($request->all());
 
-        Libro::findOrFail($id)->update($request->all());
+        if($request->hasFile('portada')){
+            $libro->portada = $request->file('portada')->store('public');
+        } else {
+            $libro->portada = "default.jpg";
+        }
 
-        //return $this->show($id)
+        $libro->save();
+
         return redirect()->route('libros.show', $id)
         ->with([
             'alerta' => 'Libro editado con éxito',
@@ -145,7 +156,7 @@ class LibroController extends Controller
         LibUser::where('libro_id',$id)->forceDelete();
         Comentario::commentsLib($id)->forceDelete();
         Libro::where('id',$id)->forceDelete();
-        
+
         return redirect()->route('libros.indexElim')
         ->with([
             'alerta' => 'Libro eliminado permanentemente',

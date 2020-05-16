@@ -45,6 +45,13 @@
         @endif
     </div>
 
+    {{-- <div>
+        <img width="100px" src="storage/app/{{Storage::get($libro->portada)}}">
+    </div> --}}
+    <div>
+        <img width="200px" height="250px" src="{{Storage::url($libro->portada)}}">
+    </div>
+
     <h1>{{$libro->titulo}}</h1>
 
     <div>

@@ -10,19 +10,29 @@
     </div>
 
     @if (isset($libro))
-        <form action="{{route('libros.update',$libro->id)}}" method="POST">
+        <form action="{{route('libros.update',$libro->id)}}" 
+            method="POST" 
+            enctype="multipart/form-data"
+        >
             @method('PUT')
     @else
-        <form action="{{route('libros.store')}}" method="POST">
+        <form action="{{route('libros.store')}}" 
+            method="POST" 
+            enctype="multipart/form-data"
+        >
             <?php $libro = new App\Libro() ?>
     @endif
         <div class="form-group col-md-12">
-            <label for="autor">Autor</label>
-            <input class="form-control" type="text" name="autor" value="{{$libro->autor}}"  placeholder="Introduce el Autor" required>
+            <label for="portada">Portada: </label>
+            <input type="file" name="portada">
         </div>
         <div class="form-group col-md-12">
             <label for="titulo">Titulo</label>
             <input class="form-control" type="text" name="titulo" value="{{$libro->titulo}}" placeholder="Introduce el Titulo" required>
+        </div>
+        <div class="form-group col-md-12">
+            <label for="autor">Autor</label>
+            <input class="form-control" type="text" name="autor" value="{{$libro->autor}}"  placeholder="Introduce el Autor" required>
         </div>
         <div class="form-group col-md-12">
             <label for="editorial">Editorial</label>
@@ -39,11 +49,6 @@
         <div class="form-group col-md-12">
             <label for="genero">Genero</label>
             <select class="form-control" name="genero_id">
-<<<<<<< HEAD
-                    {{-- <option value="">Selecciona</option> --}}
-=======
-                    {{--<option value="">Selecciona</option>--}}
->>>>>>> master
                     @if (isset($libro->genero_id))
                         <option value="{{$libro->genero_id}}">{{$libro->genero->nombre}}</option>
                         @foreach(App\Genero::all() as $genero)
@@ -57,10 +62,7 @@
                             <option value="{{$genero->id}}">{{$genero->nombre}}</option>
                         @endforeach
                     @endif
-<<<<<<< HEAD
                     
-=======
->>>>>>> master
             </select>
         </div>
         <div class="form-group col-md-12">
