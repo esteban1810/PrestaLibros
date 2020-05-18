@@ -23,7 +23,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-      Funciones
+      Navegación
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->

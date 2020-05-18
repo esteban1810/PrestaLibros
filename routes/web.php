@@ -48,12 +48,11 @@ Route::get('/usersElim', 'UserController@indexElim')->name('users.indexElim');
 Route::get('/usersElim/{libro}/show', 'UserController@showElim')->name('users.showElim');
 Route::delete('/usersElim/{libro}/elim', 'UserController@eliminar')->name('users.eliminar');
 Route::get('/usersElim/{libro}/rest', 'UserController@restaurar')->name('users.restaurar');
-<<<<<<< HEAD
+
 
 //Route::resource('/messages', 'MessageController');
 
 Route::get('/messages/{libro}/{user}', 'MessageController@solicitud')->name('messages.solicitud');
 
 Route::post('/messagesC/{libro}/{user}', 'MessageController@recibo')->name('messages.recibo');
-=======
->>>>>>> master
+

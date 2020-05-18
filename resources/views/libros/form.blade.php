@@ -10,14 +10,14 @@
     </div>
 
     @if (isset($libro))
-        <form action="{{route('libros.update',$libro->id)}}" 
-            method="POST" 
+        <form action="{{route('libros.update',$libro->id)}}"
+            method="POST"
             enctype="multipart/form-data"
         >
             @method('PUT')
     @else
-        <form action="{{route('libros.store')}}" 
-            method="POST" 
+        <form action="{{route('libros.store')}}"
+            method="POST"
             enctype="multipart/form-data"
         >
             <?php $libro = new App\Libro() ?>
@@ -62,7 +62,7 @@
                             <option value="{{$genero->id}}">{{$genero->nombre}}</option>
                         @endforeach
                     @endif
-                    
+
             </select>
         </div>
         <div class="form-group col-md-12">

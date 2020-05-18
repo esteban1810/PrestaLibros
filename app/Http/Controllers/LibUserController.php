@@ -14,10 +14,7 @@ class LibUserController extends Controller
         'user_id',
         'libro_id'
     ];
-<<<<<<< HEAD
-    
-=======
->>>>>>> master
+
     public function agregar($id){
 
         $user = User::findOrFail(\Auth::id());

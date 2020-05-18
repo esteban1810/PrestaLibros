@@ -24,9 +24,7 @@ class Comentario extends Model
     public function scopeCommentsUser($query,$id){
         return $query->where('comentario_type','=','App\User')->where('comentario_id','=',$id);
     }
-<<<<<<< HEAD
-    
-=======
+
 
     public function scopeLibroElim()
     {
@@ -34,7 +32,7 @@ class Comentario extends Model
     }
 
 
->>>>>>> master
+
     public function comentario(){
         return $this->morphTo();
     }
