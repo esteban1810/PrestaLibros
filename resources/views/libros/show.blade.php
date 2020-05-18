@@ -44,10 +44,7 @@
             @endif
         @endif
     </div>
-
-    {{-- <div>
-        <img width="100px" src="storage/app/{{Storage::get($libro->portada)}}">
-    </div> --}}
+    
     <div>
         <img width="200px" height="250px" src="{{Storage::url($libro->portada)}}">
     </div>
@@ -110,11 +107,6 @@
                 @endforeach
             </tbody>
           </table>
-            {{-- <ul class="list-group">
-                @foreach ($libro->users as $user)
-                    <li class="list-group-item"><a href="{{route('users.show',$user->id)}}">{{$user->name}}</a></li>
-                @endforeach
-            </ul> --}}
         @else
         <p>Nadie lo tiene</p>
         @endif

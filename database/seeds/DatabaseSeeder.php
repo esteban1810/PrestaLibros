@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             GeneroSeeder::class,
-            //LibroSeeder::class,
+            LibroSeeder::class,
             ComentarioSeeder::class,
         ]);
         //$this->call(GenerosTableSeeder::class);

@@ -9,6 +9,7 @@ $factory->define(Libro::class, function (Faker $faker) {
     return [
         'genero_id' => $faker->numberBetween($min=1,$max=7),
         'autor' => $faker->name,
+        'portada' => 'default.jpg',
         'titulo' => $faker->streetName,
         'editorial' => $faker->domainWord,
         'edicion' => $faker->domainWord,
