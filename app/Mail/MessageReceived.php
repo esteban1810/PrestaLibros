@@ -39,6 +39,6 @@ class MessageReceived extends Mailable
      */
     public function build()
     {
-        return $this->view('messages.received');
+        return $this->subject('Solicitud De Prestamo')->view('messages.received');
     }
 }
