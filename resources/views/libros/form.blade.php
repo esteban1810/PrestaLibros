@@ -4,6 +4,16 @@
 <div class="card-header">Nuevo Libro</div>
 
 <div class="card-body">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <h6> Los campos a continuación presentan errores, favor de corregirlos </h6>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <div>
         <a href="{{route('libros.index')}}" class="btn btn-primary btn-sm">Ver Lista</a>

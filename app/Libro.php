@@ -12,7 +12,7 @@ use App\Comentario;
 class Libro extends Model
 {
     use SoftDeletes;
-    
+
     protected $fillable = [
         'portada',
         'autor',

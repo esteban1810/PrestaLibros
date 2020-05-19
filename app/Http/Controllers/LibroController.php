@@ -50,8 +50,9 @@ class LibroController extends Controller
             'titulo' => 'required',
             'editorial' => 'required',
             'edicion' => 'required|int',
-            'anio' => 'required|max:2020',
-            'descripcion' => 'required|max:255'
+            'anio' => 'required|int|max:2020',
+            'descripcion' => 'required|max:255',
+            'portada' => 'required|image'
         ]);
 
         $libro = (new Libro)->fill($request->all());
@@ -59,7 +60,7 @@ class LibroController extends Controller
         if($request->hasFile('portada')){
             $libro->portada = $request->file('portada')->store('public');
         } else {
-            $libro->portada = "default.jpg";
+            $libro->portada = "default.jpeg";
         }
 
         $libro->save();
@@ -112,10 +113,11 @@ class LibroController extends Controller
             'titulo' => 'required',
             'editorial' => 'required',
             'edicion' => 'required|int',
-            'anio' => 'required|max:2020',
-            'descripcion' => 'required|max:255'
+            'anio' => 'required|int|max:2020',
+            'descripcion' => 'required|max:255',
+            'portada' => 'required|image'
         ]);
-        
+
         $libro = Libro::findOrFail($id)->fill($request->all());
 
         if($request->hasFile('portada')){

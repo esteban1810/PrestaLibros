@@ -24,19 +24,19 @@ Route::resource('/users', 'UserController');
 Route::resource('/generos', 'GeneroController');
 
 //Rutas para listado y carga de archivos
-Route::get('archivo', function() {
+Route::get('archivos', function() {
     $archivos = App\Archivos::all();
     return view('archivos.index', compact('archivos'));
 });
-Route::get('archivo/formulario', function() {
+Route::get('archivos/formulario', function() {
     return view('archivos.form');
 });
 
-Route::post('archivo/cargar', 'ArchivosController@upload')->name('archivos.upload');
+Route::post('archivos/cargar', 'ArchivosController@upload')->name('archivos.upload');
 
-Route::get('archivo/{archivo}/descargar', 'ArchivosController@download')->name('archivos.download');
+Route::get('archivos/{archivos}/descargar', 'ArchivosController@download')->name('archivos.download');
 
-Route::post('archivo/{archivo}/borrar', 'ArchivosController@delete')->name('archivos.delete');
+Route::post('archivos/{archivos}/borrar', 'ArchivosController@delete')->name('archivos.delete');
 
 
 Route::get('/librosElim', 'LibroController@indexElim')->name('libros.indexElim');

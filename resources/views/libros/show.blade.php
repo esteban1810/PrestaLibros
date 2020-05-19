@@ -44,7 +44,7 @@
             @endif
         @endif
     </div>
-    
+
     <div>
         <img width="200px" height="250px" src="{{Storage::url($libro->portada)}}">
     </div>
