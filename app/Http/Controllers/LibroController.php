@@ -10,7 +10,6 @@ use DB;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
 
-
 class LibroController extends Controller
 {
     public function __construct(){

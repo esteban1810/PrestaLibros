@@ -10,6 +10,8 @@
             <p></p>
             <a href="{{route('home')}}" class="btn btn-primary btn-sm">Volver al menu</a>
             <p></p>
+            <a href="{{route('ImprimirDatos', $user->id)}}" class="btn btn-dark btn-sm">Imprimir PDF</a>
+            <p></p>
             @if(\Gate::allows('admin'))
                 @if ($visible)
                     <form action="{{route('users.eliminar',$user->id)}}" method="POST">

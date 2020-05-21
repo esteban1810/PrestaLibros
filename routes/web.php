@@ -42,3 +42,5 @@ Route::post('/messagesC/{libro}/{user}', 'MessageController@recibo')->name('mess
 
 Route::get('/imprimir-pdf/{libro}', 'LibroController@imprimir')->name('imprimir');
 
+Route::get('/imprimir-userpdf/{user}', 'UserController@imprimirUser')->name('ImprimirDatos');
+

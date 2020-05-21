@@ -28,7 +28,7 @@
     </thead>
     <tbody>
             <tr>
-                <td><img width="200px" height="250px" src="{{Storage::url($libros->portada)}}"></td>
+                <td><img  src="{{Storage::url($libros->portada)}}" width="200px" height="250px"></td>
                 <td>{{$libros->genero->nombre}}</td>
                 <td>{{$libros->titulo}}</td>
                 <td>{{$libros->autor}}</td>

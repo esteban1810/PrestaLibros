@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\LibUser;
 use App\User;
 use App\Comentario;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class UserController extends Controller
 {
@@ -105,7 +106,7 @@ class UserController extends Controller
         Comentario::commentsUser($id)->forceDelete();
         Comentario::onlyTrashed()->where('user_id',$id)->forceDelete();
         User::onlyTrashed()->where('id',$id)->forceDelete();
-        
+
         return redirect()->route('users.indexElim')
         ->with([
             'alerta' => 'Usuario eliminado permanentemente',
@@ -137,4 +138,12 @@ class UserController extends Controller
         $visible = true;
         return view('users.index', compact(['users','visible']));
     }
+
+    public function imprimirUser($id){
+
+        $users = User::findOrFail($id);
+        $pdf = \PDF::loadView('users.pdf', compact('users'));
+        return $pdf->download('Datos.pdf');
+    }
+
 }
