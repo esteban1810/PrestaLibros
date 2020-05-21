@@ -3,12 +3,7 @@
 @section('content')
  <!-- Page Heading -->
 
- <style>
- .estilo {
-    background-color: #468FBF ;
 
-  }
-  </style>
 
  <h1 class="h3 mb-4 text-black-800">PrestaLibros HOME</h1>
 

@@ -8,6 +8,8 @@ use App\LibUser;
 use DB;
 
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
+
 
 class LibroController extends Controller
 {
@@ -188,5 +190,20 @@ class LibroController extends Controller
         $libros = Libro::onlyTrashed()->get();
         $visible = true;
         return view('libros.index', compact(['libros','visible']));
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function imprimir($id){
+
+        $libros = Libro::findOrFail($id);
+        $pdf = \PDF::loadView('libros.pdf', compact('libros'));
+        return $pdf->download('Informacion.pdf');
     }
 }

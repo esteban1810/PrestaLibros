@@ -23,22 +23,6 @@ Route::resource('/users', 'UserController');
 
 Route::resource('/generos', 'GeneroController');
 
-//Rutas para listado y carga de archivos
-Route::get('archivos', function() {
-    $archivos = App\Archivos::all();
-    return view('archivos.index', compact('archivos'));
-});
-Route::get('archivos/formulario', function() {
-    return view('archivos.form');
-});
-
-Route::post('archivos/cargar', 'ArchivosController@upload')->name('archivos.upload');
-
-Route::get('archivos/{archivos}/descargar', 'ArchivosController@download')->name('archivos.download');
-
-Route::post('archivos/{archivos}/borrar', 'ArchivosController@delete')->name('archivos.delete');
-
-
 Route::get('/librosElim', 'LibroController@indexElim')->name('libros.indexElim');
 Route::get('/libroShowElim/{libro}', 'LibroController@showElim')->name('libros.showElim');
 Route::delete('/libroEliminar/{libro}', 'LibroController@eliminar')->name('libros.eliminar');
@@ -55,4 +39,6 @@ Route::get('/usersElim/{libro}/rest', 'UserController@restaurar')->name('users.r
 Route::get('/messages/{libro}/{user}', 'MessageController@solicitud')->name('messages.solicitud');
 
 Route::post('/messagesC/{libro}/{user}', 'MessageController@recibo')->name('messages.recibo');
+
+Route::get('/imprimir-pdf/{libro}', 'LibroController@imprimir')->name('imprimir');
 

@@ -5,6 +5,7 @@
 
 <div class="card-body">
     <div>
+
         @if ($visible)
             <a href="{{route('libros.index')}}" class="btn btn-primary btn-md">Libros visibles</a>
         @else
@@ -16,7 +17,7 @@
     @if (!$visible)
         {{$libros->links()}}
     @endif
-    
+
     <table class="table">
         <thead>
             <tr>

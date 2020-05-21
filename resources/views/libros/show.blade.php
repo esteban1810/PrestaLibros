@@ -7,6 +7,9 @@
 
         <a href="{{route('libros.index')}}" class="btn btn-primary btn-sm">Volver</a>
         <p></p>
+
+        <a href="{{route('imprimir', $libro->id)}}" class="btn btn-dark btn-sm">Imprimir PDF</a>
+        <p></p>
         @if ($visible)
             <form action="{{route('libros.restaurar',$libro->id)}}" method="GET">
                 <input type="submit" value="Restaurar" class="btn btn-success btn-sm">
