@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+use App\Http\Resources\Libro as LibroResource;
+use App\Libro;
+use App\User;
+
+Route::get('/coleccion', function () {
+    return response()->json(LibroResource::collection(\Auth::user()->libros->keyBy->id),200);
+});

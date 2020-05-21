@@ -44,3 +44,10 @@ Route::get('/imprimir-pdf/{libro}', 'LibroController@imprimir')->name('imprimir'
 
 Route::get('/imprimir-userpdf/{user}', 'UserController@imprimirUser')->name('ImprimirDatos');
 
+use App\Http\Resources\Libro as LibroResource;
+use App\Libro;
+use App\User;
+
+Route::get('/coleccion', function () {
+    return response()->json(LibroResource::collection(\Auth::user()->libros->keyBy->id),200);
+});
