@@ -15,6 +15,7 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'admin',
             'email' => 'admin@admin.com',
+            'role_id' => '1',
             'email_verified_at' => now(),
             'password' => Hash::make('admin'), // password
             'remember_token' => Str::random(10)
@@ -22,10 +23,11 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'esteban',
             'email' => 'esteban3@gmail.com',
+            'role_id' => '2',
             'email_verified_at' => now(),
             'password' => Hash::make('esteban3'), // password
             'remember_token' => Str::random(10)
         ]);
-        //factory(User::class,10)->create();
+        factory(User::class,10)->create();
     }
 }
