@@ -18,14 +18,14 @@
                                 @if (\Gate::allows('isAmin'))
                                     <a href="{{route('users.indexElim')}}" class="btn btn-primary btn-sm">Usuarios Eliminados</a>
                                 @endif
-                                
+
                                 <p></p>
                                 <div>
                                     {{$users->links()}}
                                 </div>
                             @endif
                         </div>
-                        
+
                         <br>
                         <table class="table">
                             <thead>

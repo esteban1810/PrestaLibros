@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             GeneroSeeder::class,
             LibroSeeder::class,
-            ComentarioSeeder::class,
+            UsLibSeeder::class,
+            //ComentarioSeeder::class,
         ]);
         //$this->call(GenerosTableSeeder::class);
     }

@@ -20,8 +20,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(12);
-        //paginate(12);
+        // $users = User::paginate(12);
+        // $users = User::where('role_id',null)->get();
+        $users = User::where('role_id',null)->paginate(12);
         $visible = false;
         return view('users.index',compact(['users','visible']));
     }

@@ -22,17 +22,20 @@
                 @csrf
             </form>
         @else
-            @if ($libro->users->find(\Auth::id()))
-                <form action="{{route('LibUser.quitar',$libro->id)}}" method="POST">
-                    <input type="submit" value="Quitar de mi biblioteca" class="btn btn-danger btn-sm">
-                    @csrf
-                </form>
-            @else
-                <form action="{{route('libUser.agregar',$libro->id)}}" method="POST">
-                    <input type="submit" value="Añadir a mi biblioteca" class="btn btn-success btn-sm">
-                    @csrf
-                </form>
+            @if (!\Gate::allows('isAdmin'))
+                @if ($libro->users->find(\Auth::id()))
+                    <form action="{{route('LibUser.quitar',$libro->id)}}" method="POST">
+                        <input type="submit" value="Quitar de mi biblioteca" class="btn btn-danger btn-sm">
+                        @csrf
+                    </form>
+                @else
+                    <form action="{{route('libUser.agregar',$libro->id)}}" method="POST">
+                        <input type="submit" value="Añadir a mi biblioteca" class="btn btn-success btn-sm">
+                        @csrf
+                    </form>
+                @endif
             @endif
+            
             <p></p>
             @if(\Gate::allows('isAdmin') || \Gate::allows('isMine'))
                 <form action="{{route('libros.edit',$libro->id)}}" method="GET">

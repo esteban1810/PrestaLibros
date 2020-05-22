@@ -21,13 +21,45 @@ class UserSeeder extends Seeder
             'remember_token' => Str::random(10)
         ]);
         User::create([
-            'name' => 'esteban',
+            'name' => 'esteban sevilla',
             'email' => 'esteban3@gmail.com',
             'role_id' => null,
             'email_verified_at' => now(),
             'password' => Hash::make('esteban3'), // password
             'remember_token' => Str::random(10)
         ]);
-        factory(User::class,10)->create();
+        User::create([
+            'name' => 'pamela panela',
+            'email' => 'pamela6@gmail.com',
+            'role_id' => null,
+            'email_verified_at' => now(),
+            'password' => Hash::make('esteban3'), // password
+            'remember_token' => Str::random(10)
+        ]);
+        User::create([
+            'name' => 'jose alcacer',
+            'email' => 'alcacer9@gmail.com',
+            'role_id' => null,
+            'email_verified_at' => now(),
+            'password' => Hash::make('esteban3'), // password
+            'remember_token' => Str::random(10)
+        ]);
+        User::create([
+            'name' => 'antonio rocola',
+            'email' => 'rocola12@gmail.com',
+            'role_id' => null,
+            'email_verified_at' => now(),
+            'password' => Hash::make('esteban3'), // password
+            'remember_token' => Str::random(10)
+        ]);
+        User::create([
+            'name' => 'pito perez',
+            'email' => 'pitoperez15@gmail.com',
+            'role_id' => null,
+            'email_verified_at' => now(),
+            'password' => Hash::make('esteban3'), // password
+            'remember_token' => Str::random(10)
+        ]);
+        //factory(User::class,10)->create();
     }
 }
