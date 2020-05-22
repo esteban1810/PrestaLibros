@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use Illuminate\Support\Facades\DB;
+use App\Mail\SendEmailTest;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -24,7 +26,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('registered:users')->everyMinute();
+        $schedule->command('registered:users')->daily();
+        $schedule->job(new SendEmailTest)->daily();
+
     }
 
     /**

@@ -7,11 +7,10 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SendMailable extends Mailable
+class SendEmailTest extends Mailable
 {
     use Queueable, SerializesModels;
     public $count;
-
 
 
     /**
@@ -31,7 +30,6 @@ class SendMailable extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.registeredcount');
-
+        return $this->view('emails.libroscount');
     }
 }
