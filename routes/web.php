@@ -34,8 +34,6 @@ Route::delete('/usersElim/{libro}/elim', 'UserController@eliminar')->name('users
 Route::get('/usersElim/{libro}/rest', 'UserController@restaurar')->name('users.restaurar');
 
 
-//Route::resource('/messages', 'MessageController');
-
 Route::get('/messages/{libro}/{user}', 'MessageController@solicitud')->name('messages.solicitud');
 
 Route::post('/messagesC/{libro}/{user}', 'MessageController@recibo')->name('messages.recibo');

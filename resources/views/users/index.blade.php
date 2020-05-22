@@ -15,7 +15,10 @@
                             @if ($visible)
                                 <a href="{{route('users.index')}}" class="btn btn-primary btn-sm">Usuarios Visibles</a>
                             @else
-                                <a href="{{route('users.indexElim')}}" class="btn btn-primary btn-sm">Usuarios Eliminados</a>
+                                @if (\Gate::allows('isAmin'))
+                                    <a href="{{route('users.indexElim')}}" class="btn btn-primary btn-sm">Usuarios Eliminados</a>
+                                @endif
+                                
                                 <p></p>
                                 <div>
                                     {{$users->links()}}

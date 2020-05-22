@@ -53,7 +53,7 @@ class LibroController extends Controller
             'edicion' => 'required|int',
             'anio' => 'required|int|max:2020',
             'descripcion' => 'required|max:255',
-            'portada' => 'required|image'
+            'portada' => 'image'
         ]);
 
         $libro = (new Libro)->fill($request->all());

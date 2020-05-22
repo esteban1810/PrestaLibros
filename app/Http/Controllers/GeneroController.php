@@ -28,7 +28,7 @@ class GeneroController extends Controller
      */
     public function create()
     {
-        //
+        return view('generos.form');
     }
 
     /**
@@ -39,7 +39,8 @@ class GeneroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Genero::create($request->all());
+        return redirect()->route('generos.index');
     }
 
     /**
@@ -60,9 +61,8 @@ class GeneroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Genero $genero)
     {
-        $genero = Genero::findOrFail($id);
         return view('generos.form',compact('genero'));
     }
 
@@ -73,9 +73,10 @@ class GeneroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Genero $genero)
     {
-        //
+        $genero->update($request->all());
+        return redirect()->route('generos.index');
     }
 
     /**
@@ -84,8 +85,9 @@ class GeneroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Genero $genero)
     {
-        //
+        $genero->delete();
+        return redirect()->route('generos.index');
     }
 }

@@ -15,7 +15,6 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Model' => 'App\Policies\ModelPolicy',
         Comentario::class => ComentarioPolicy::class
     ];
 
@@ -38,6 +37,14 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('accionComentario', function ($user, $comentario) {
             return $user->id === $comentario->user_id;
+        });
+
+        Gate::define('isAdmin', function ($user) {
+            return $user->role_id === 1;
+        });
+
+        Gate::define('isMine', function($user,$perfil){
+            return $user->id===$perfil->id;
         });
     }
 }

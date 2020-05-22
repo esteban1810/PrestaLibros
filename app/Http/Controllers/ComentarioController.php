@@ -49,9 +49,7 @@ class ComentarioController extends Controller
 
     public function storeLibro(Request $request, $id){
 
-        $libro = Libro::findOrFail($id);
-
-        $libro->comentarios()->create([
+        Comentario::create([
             'contenido' => $request->contenido,
             'user_id' => \Auth::id(),
             'comentario_id' => $id,
@@ -61,15 +59,15 @@ class ComentarioController extends Controller
         return back();
     }
 
-    public function storeUser(Request $request, $id){
-        $user = User::findOrFail($id);
+    public function storeUser(Request $request,User $user){
 
-        $user->comentarios()->create([
+        Comentario::create([
             'contenido' => $request->contenido,
             'user_id' => \Auth::id(),
-            'comentario_id' => $id,
+            'comentario_id' => 12,
             'comentario_type' => 'App\User'
         ]);
+
 
         return back();
     }
@@ -91,10 +89,8 @@ class ComentarioController extends Controller
      * @param  \App\Comentario  $comentario
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comentario $comentario)
     {
-        $comentario = Comentario::findOrFail($id);
-
         $this->authorize('acceso',$comentario);
 
         return view('comentarios.show',compact('comentario'));
@@ -107,12 +103,10 @@ class ComentarioController extends Controller
      * @param  \App\Comentario  $comentario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comentario $comentario)
     {
-        $comentario = Comentario::findOrFail($id);
         $this->authorize('acceso',$comentario);
         $comentario->update($request->all());
-        // $comentario = Comentario::findOrFail($id)->update($request->all());
 
         return redirect('/libros');
     }
@@ -123,13 +117,11 @@ class ComentarioController extends Controller
      * @param  \App\Comentario  $comentario
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comentario $comentario)
     {
-        $comentario = Comentario::findOrFail($id);
         $this->authorize('acceso',$comentario);
         $comentario->delete();
-        //Comentario::findOrFail($id)->delete();
 
-        return back();
+        return redirect()->route('home');
     }
 }

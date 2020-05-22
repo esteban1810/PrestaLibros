@@ -35,9 +35,13 @@
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">¿Qué hay de nuevo viejo?:</h6>
-        <a class="collapse-item" href="{{ route('libros.index') }}">Ver lista Libros</a>
-        <a class="collapse-item" href="{{ route('users.index') }}">Ver lista Usuarios</a>
-        <a class="collapse-item" href="{{ route('users.show',\Auth::id())}}">Ver Perfil</a>
+          <a class="collapse-item" href="{{ route('libros.index') }}">Ver lista Libros</a>
+          @if (\Gate::allows('isAdmin'))
+            <a class="collapse-item" href="{{route('roles.index')}}">Ver lista Roles</a>
+            <a class="collapse-item" href="{{route('generos.index')}}">Ver lista Generos</a>
+          @endif
+          <a class="collapse-item" href="{{ route('users.index') }}">Ver lista Usuarios</a>
+          <a class="collapse-item" href="{{ route('users.show',\Auth::id())}}">Ver Perfil</a>
         </div>
       </div>
     </li>

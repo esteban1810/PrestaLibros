@@ -10,7 +10,9 @@
             <a href="{{route('libros.index')}}" class="btn btn-primary btn-md">Libros visibles</a>
         @else
             <a href="{{route('libros.create')}}" class="btn btn-primary btn-md">Nuevo</a>
-            <a href="{{route('libros.indexElim')}}" class="btn btn-primary btn-md">Libros Borrados</a>
+            @if (\Gate::allows('isAdmin'))
+                <a href="{{route('libros.indexElim')}}" class="btn btn-primary btn-md">Libros Borrados</a>
+            @endif
         @endif
     </div>
     <br>
@@ -21,20 +23,20 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Género</th>
+                <th scope="col">Portada</th>
                 <th scope="col">Titulo</th>
                 <th scope="col">Autor</th>
-                <th scope="col">Descripción</th>
+                <th scope="col">Género</th>
                 <th scope="col">Operaciones</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($libros as $libro)
                 <tr>
-                    <td>{{$libro->genero->nombre}}</td>
+                    <td><img src="{{Storage::url($libro->portada)}}" width="80px"></td>
                     <td>{{$libro->titulo}}</td>
                     <td>{{$libro->autor}}</td>
-                    <td>{{$libro->descripcion}}</td>
+                    <td>{{$libro->genero->nombre}}</td>
                     <td>
                         <div>
                             @if ($visible)

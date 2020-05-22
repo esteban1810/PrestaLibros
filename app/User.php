@@ -48,14 +48,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $consulta->findOrFail($id);
     }
 
-    public function users(){
+    public function comentarios(){
         return $this->morphMany(Comentario::class,'comentario');
     }
 
     //Relaciones
-    public function comentarios(){
-        return $this->hasMany(Comentario::class);
-    }
+    // public function comentarios(){
+    //     return $this->hasMany(Comentario::class,'user_id');
+    // }
 
     public function libros(){
         return $this->belongsToMany(Libro::class);
@@ -72,4 +72,8 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->attributes['name'] = ucwords($value);
     }
     //Fin Mutators
+
+    public function role(){
+        return $this->belongsTo('App\Role');
+    }
 }

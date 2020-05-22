@@ -34,7 +34,7 @@
                 </form>
             @endif
             <p></p>
-            @if(\Gate::allows('admin'))
+            @if(\Gate::allows('isAdmin') || \Gate::allows('isMine'))
                 <form action="{{route('libros.edit',$libro->id)}}" method="GET">
                     <input type="submit" class="btn btn-warning btn-sm" value="Editar">
                 </form>
@@ -141,13 +141,15 @@
         @endif
     </div>
     <br>
-    <form action="{{route('comentarios.storeLibro',$libro->id)}}" method="POST">
-        <div class="form-group">
-            <label for="comentario" style="font-weight: bold;">Comentar</label>
-            <textarea class="form-control" id="comentario" name="contenido" rows="5"></textarea>
-        </div>
-        @csrf
-        <input type="submit" value="Aceptar" class="btn btn-primary">
-    </form>
+    @if (!\Gate::allows('isAdmin'))
+        <form action="{{route('comentarios.storeLibro',$libro->id)}}" method="POST">
+            <div class="form-group">
+                <label for="comentario" style="font-weight: bold;">Comentar</label>
+                <textarea class="form-control" id="comentario" name="contenido" rows="5"></textarea>
+            </div>
+            @csrf
+            <input type="submit" value="Aceptar" class="btn btn-primary">
+        </form>
+    @endif
 </div>
 @endsection
