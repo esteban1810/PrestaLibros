@@ -19,7 +19,7 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">Portada</th>
+            {{--<th scope="col">Portada</th>--}}
             <th scope="col">Género</th>
             <th scope="col">Titulo</th>
             <th scope="col">Autor</th>
@@ -28,7 +28,7 @@
     </thead>
     <tbody>
             <tr>
-                <td><img  src="{{Storage::url($libros->portada)}}" width="200px" height="250px"></td>
+                {{--<td><img  src="{{Storage::url($libros->portada)}}" width="200px" height="250px"></td>--}}
                 <td>{{$libros->genero->nombre}}</td>
                 <td>{{$libros->titulo}}</td>
                 <td>{{$libros->autor}}</td>
