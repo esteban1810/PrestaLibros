@@ -35,13 +35,9 @@ class SendEmailJob implements ShouldQueue
      */
     public function handle()
     {
-
-        //Mail::to('prestalibrosgdl@gmail.com')->send(new SendEmailTest($totalLibros));
         $email = \DB::table('libros')
         ->whereRaw('Date(created_at) = CURDATE()')
         ->count();
-
-        //Mail::to(['email']->send($email));
         Mail::to('prestalibrosgdl@gmail.com')->send(new SendEmailTest($email));
     }
 }

@@ -45,7 +45,7 @@ Route::get('/imprimir-pdf/{libro}', 'LibroController@imprimir')->name('imprimir'
 Route::get('/imprimir-userpdf/{user}', 'UserController@imprimirUser')->name('ImprimirDatos');
 
 Route::get('emails.libroscount', function(){
-    $details['email'] = 'prestalibrosgdl@gmail.com';
+    $details = 'prestalibrosgdl@gmail.com';
     dispatch(new App\Jobs\SendEmailJob($details));
     dd('done');
 });
