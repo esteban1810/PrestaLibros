@@ -2,8 +2,13 @@
 
 namespace App\Console;
 
+use Illuminate\Support\Facades\DB;
+use App\Mail\SendEmailTest;
+use App\Jobs\SendEmailJob;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Libro;
+
 
 class Kernel extends ConsoleKernel
 {
@@ -12,8 +17,9 @@ class Kernel extends ConsoleKernel
      *
      * @var array
      */
+
     protected $commands = [
-        //
+        'App\Console\Commands\RegisteredUsers',
     ];
 
     /**
@@ -22,9 +28,13 @@ class Kernel extends ConsoleKernel
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
      * @return void
      */
+
+
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $job = Libro::get()->count();
+        $schedule->command('registered:users')->everyMinute();
+        $schedule->job(new SendEmailTest($job))->everyMinute();
     }
 
     /**
