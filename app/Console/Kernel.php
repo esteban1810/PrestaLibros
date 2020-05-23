@@ -32,9 +32,10 @@ class Kernel extends ConsoleKernel
 
     protected function schedule(Schedule $schedule)
     {
-        $job = Libro::get()->count();
+
         $schedule->command('registered:users')->everyMinute();
-        $schedule->job(new SendEmailTest($job))->everyMinute();
+        //$job = Libro::get()->count();
+        //$schedule->job(new SendEmailTest($job))->everyMinute();
     }
 
     /**

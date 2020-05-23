@@ -14,12 +14,13 @@
             text-align: center;
         }
     </style>
-<h1> Información del Usuario "{{$users->name}}"</h1>
+<h1> Información del Usuario {{$users->name}}</h1>
 
 <table class="table">
     <thead>
         <tr>
             <th scope="col">Email</th>
+            <th scope="col">Rol</th>
             <th scope="col">Colección</th>
             <th scope="col">Comentarios</th>
         </tr>
@@ -27,10 +28,12 @@
     <tbody>
             <tr>
                 <td>{{$users->email}}</td>
+                <td>{{$users->role->nombre??App\Role::find($users->id)->nombre}}</td>
                 <td>
                     @if (count($users->libros))
                         @foreach ($users->libros as $libro)
                                     {{$libro->titulo}}
+                                    <br>
                         @endforeach
                     @else
                         <p>Aún no tiene libros agregados</p>

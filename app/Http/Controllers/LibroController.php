@@ -126,7 +126,7 @@ class LibroController extends Controller
         if($request->hasFile('portada')){
             $libro->portada = $request->file('portada')->store('public');
         } else {
-            $libro->portada = "default.jpg";
+            $libro->portada = "default.jpeg";
         }
 
         $libro->save();
@@ -177,7 +177,7 @@ class LibroController extends Controller
         ->with([
             'alerta' => 'Libro restaurado con éxito',
             'clase-alerta' => 'alert-success'
-            ]); 
+            ]);
     }
 
     public function showElim($id)

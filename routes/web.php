@@ -42,9 +42,8 @@ Route::get('/imprimir-pdf/{libro}', 'LibroController@imprimir')->name('imprimir'
 
 Route::get('/imprimir-userpdf/{user}', 'UserController@imprimirUser')->name('ImprimirDatos')->middleware('verified');
 
-<<<<<<< HEAD
 Route::resource('/roles', 'RoleController')->middleware('verified');
-=======
+
 Route::get('/imprimir-userpdf/{user}', 'UserController@imprimirUser')->name('ImprimirDatos');
 
 Route::get('emails.libroscount', function(){
@@ -52,4 +51,4 @@ Route::get('emails.libroscount', function(){
     dispatch(new App\Jobs\SendEmailJob($details));
     dd('done');
 });
->>>>>>> master
+
