@@ -178,7 +178,6 @@ class LibroController extends Controller
             'alerta' => 'Libro restaurado con éxito',
             'clase-alerta' => 'alert-success'
             ]);
-            
     }
 
     public function showElim($id)
