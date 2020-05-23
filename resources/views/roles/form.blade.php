@@ -4,7 +4,9 @@
 <div class="card-header">Lista de roles</div>
     <div class="card-body">
         @if (isset($role))
-            {!! Form::open(['route'=>['roles.update', $role->id]]) !!}
+            {!! Form::open(['route'=>['roles.update', $role->id],'method'=>'PUT']) !!}
+            {{-- <form action="{{route('roles.update',$role->id)}}" method="GET">
+                @method('PUT') --}}
         @else
             {!!Form::open(['route'=>'roles.store','method'=>'POST'])!!}
         @endif

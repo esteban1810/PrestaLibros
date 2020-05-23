@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Libro;
 use App\Genero;
 use Illuminate\Http\Request;
 
@@ -39,8 +40,16 @@ class GeneroController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nombre' => 'required|min:5|max:20',
+        ]);
+
         Genero::create($request->all());
-        return redirect()->route('generos.index');
+        return redirect()->route('generos.index')
+        ->with([
+            'alerta' => 'Genero creado con éxito',
+            'clase-alerta' => 'alert-success'
+            ]);
     }
 
     /**

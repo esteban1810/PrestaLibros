@@ -77,7 +77,7 @@
         </div>
         <div class="form-group col-md-12">
             <label for="descripcion">Descripcion</label>
-            <textarea class="form-control" rows="3" name="descripcion" placeholder="Introduce una breve descripción" value="{{$libro->descripcion}}" required></textarea>
+            <textarea class="form-control" rows="3" name="descripcion" placeholder="Introduce una breve descripción" value="{{$libro->descripcion}}" required>{{$libro->descripcion}}</textarea>
         </div>
         <div class="form-group col-md-12">
             <input type="submit" class="btn btn-primary" value="Aceptar">

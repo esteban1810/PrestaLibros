@@ -49,7 +49,7 @@ class ComentarioController extends Controller
 
     public function storeLibro(Request $request, $id){
 
-        Comentario::create([
+        $comentario = Comentario::create([
             'contenido' => $request->contenido,
             'user_id' => \Auth::id(),
             'comentario_id' => $id,
@@ -59,12 +59,12 @@ class ComentarioController extends Controller
         return back();
     }
 
-    public function storeUser(Request $request,User $user){
+    public function storeUser(Request $request,$id){
 
-        Comentario::create([
+        $comentario = Comentario::create([
             'contenido' => $request->contenido,
             'user_id' => \Auth::id(),
-            'comentario_id' => 12,
+            'comentario_id' => $id,
             'comentario_type' => 'App\User'
         ]);
 
@@ -122,6 +122,6 @@ class ComentarioController extends Controller
         $this->authorize('acceso',$comentario);
         $comentario->delete();
 
-        return redirect()->route('home');
+        return back();
     }
 }

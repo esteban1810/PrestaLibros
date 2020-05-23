@@ -45,7 +45,7 @@
                             <div class="form-group row">
                                 {!! Form::label('role_id', 'Rol:',['class'=>'col-md-4 col-form-label text-md-right']) !!}
                                 <div class="col-md-6">
-                                    {!! Form::select('genero_id', App\Role::all()->pluck('nombre','id'), $user->role_id??2, ['class'=>'custom-select']) !!}
+                                    {!! Form::select('role_id', App\Role::all()->pluck('nombre','id'), $user->role_id??2, ['class'=>'custom-select']) !!}
                                 </div>
                                 </div>
                         @endif

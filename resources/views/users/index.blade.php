@@ -8,24 +8,19 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Lista De Usuarios</div>
-
+                    
                     <div class="card-body">
                         <div>
                             <a href="{{route('home')}}" class="btn btn-primary btn-sm">Volver al menu</a>
                             @if ($visible)
                                 <a href="{{route('users.index')}}" class="btn btn-primary btn-sm">Usuarios Visibles</a>
                             @else
-                                @if (\Gate::allows('isAmin'))
+                                @if (\Gate::allows('isAdmin'))
                                     <a href="{{route('users.indexElim')}}" class="btn btn-primary btn-sm">Usuarios Eliminados</a>
                                 @endif
-
                                 <p></p>
-                                <div>
-                                    {{$users->links()}}
-                                </div>
                             @endif
                         </div>
-
                         <br>
                         <table class="table">
                             <thead>

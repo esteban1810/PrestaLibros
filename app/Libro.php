@@ -28,6 +28,10 @@ class Libro extends Model
         return $this->morphMany(Comentario::class,'comentario');
     }
 
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
+
     public function users(){
         return $this->belongsToMany(User::class);
     }
@@ -54,5 +58,5 @@ class Libro extends Model
     {
         $this->attributes['autor'] = ucwords($value);
     }
-    //Fin Accesors
+    //Fin Acce
 }

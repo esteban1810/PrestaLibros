@@ -22,7 +22,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role_id',
     ];
 
     /**
@@ -59,6 +59,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function libros(){
         return $this->belongsToMany(Libro::class);
+    }
+
+    public function librosCreados(){
+        return $this->hasMany('App\Libro', 'user_id');
     }
 
     public function genero(){

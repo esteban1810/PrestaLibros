@@ -37,7 +37,7 @@
             @endif
             
             <p></p>
-            @if(\Gate::allows('isAdmin') || \Gate::allows('isMine'))
+            @if(\Gate::allows('isAdmin') || \Gate::allows('isMineBook',$libro))
                 <form action="{{route('libros.edit',$libro->id)}}" method="GET">
                     <input type="submit" class="btn btn-warning btn-sm" value="Editar">
                 </form>

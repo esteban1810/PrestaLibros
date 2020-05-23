@@ -58,6 +58,8 @@ class LibroController extends Controller
 
         $libro = (new Libro)->fill($request->all());
 
+        $libro->user_id=\Auth::id();
+
         if($request->hasFile('portada')){
             $libro->portada = $request->file('portada')->store('public');
         } else {
@@ -66,7 +68,7 @@ class LibroController extends Controller
 
         $libro->save();
 
-        $libro->users()->attach(\Auth::id());
+        //$libro->users()->attach(\Auth::id());
 
         return redirect()->route('libros.index')
         ->with([
@@ -144,7 +146,7 @@ class LibroController extends Controller
      */
     public function destroy($id)
     {
-        LibUser::where('libro_id',$id)->delete();
+        //LibUser::where('libro_id',$id)->delete();
         Comentario::commentsLib($id)->delete();
         Libro::findOrFail($id)->delete();
 
@@ -180,7 +182,7 @@ class LibroController extends Controller
 
     public function showElim($id)
     {
-        $libro = Libro::onlyTrashed()->with(['comentarios','users'])->firstWhere('id',$id);
+        $libro = Libro::withTrashed()->with(['comentarios','users'])->firstWhere('id',$id);
         $visible = true;
         return view('libros.show',compact(['libro','visible']));
     }

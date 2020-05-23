@@ -12,11 +12,13 @@
         <a href="{{route('generos.edit',$genero->id)}}" class="btn btn-warning">Modificar</a>
         <p></p>
         
-        <form action="{{route('generos.destroy',$genero->id)}}" method="POST">
-            @csrf
-            @method('DELETE')
-            <input type="submit" value="Eliminar" class="btn btn-danger">
-        </form>
+        @if (count($genero->libros)==0)
+            <form action="{{route('generos.destroy',$genero->id)}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <input type="submit" value="Eliminar" class="btn btn-danger">
+            </form>
+        @endif
     </div>
 </div>
 @endsection

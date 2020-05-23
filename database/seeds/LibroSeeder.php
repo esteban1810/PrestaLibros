@@ -22,6 +22,7 @@ class LibroSeeder extends Seeder
         });
         */
         Libro::create([
+            'user_id'=>'2',
             'genero_id' => '3',
             'autor' => 'Stephen King',
             'titulo' => 'It',
@@ -33,6 +34,7 @@ class LibroSeeder extends Seeder
         ]);
         
         Libro::create([
+            'user_id'=>'2',
             'genero_id' => '1',
             'autor' => 'Ryard',
             'titulo' => 'Las Tierras Virgenes',
@@ -46,6 +48,7 @@ class LibroSeeder extends Seeder
         //     $libro->users()->save(factory(App\User::class)->make());
         // });
         Libro::create([
+            'user_id'=>'3',
             'genero_id' => '5',
             'autor' => 'Juan Rulfo',
             'titulo' => 'El Llano En Llamas',
@@ -57,6 +60,7 @@ class LibroSeeder extends Seeder
         ]);
 
         Libro::create([
+            'user_id'=>'3',
             'genero_id' => '3',
             'autor' => 'Gabriel Garcia Marquez',
             'titulo' => 'Cien años de soledad',
@@ -68,6 +72,7 @@ class LibroSeeder extends Seeder
         ]);
 
         Libro::create([
+            'user_id'=>'4',
             'genero_id' => '4',
             'autor' => 'Miguel De Cervantes',
             'portada' => 'default.jpeg',

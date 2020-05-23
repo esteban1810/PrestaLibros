@@ -27,13 +27,13 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('admin', function(){
-            if(\Auth::id() == 1){
-                return true;
-            }else{
-                return false;
-            }
-        });
+        // Gate::define('admin', function(){
+        //     if(\Auth::id() == 1){
+        //         return true;
+        //     }else{
+        //         return false;
+        //     }
+        // });
 
         Gate::define('accionComentario', function ($user, $comentario) {
             return $user->id === $comentario->user_id;
@@ -43,8 +43,16 @@ class AuthServiceProvider extends ServiceProvider
             return $user->role_id === 1;
         });
 
-        Gate::define('isMine', function($user,$perfil){
+        Gate::define('isAdminPerfil', function($user,$role){
+            return 1===$role;
+        });
+
+        Gate::define('isMineUser', function($user,$perfil){
             return $user->id===$perfil->id;
+        });
+
+        Gate::define('isMineBook', function($user, $libro){
+            return $user->id === $libro->user_id;
         });
     }
 }
