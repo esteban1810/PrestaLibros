@@ -177,7 +177,7 @@ class LibroController extends Controller
         ->with([
             'alerta' => 'Libro restaurado con éxito',
             'clase-alerta' => 'alert-success'
-            ]);
+            ]); 
     }
 
     public function showElim($id)
