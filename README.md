@@ -1,3 +1,37 @@
+Proyecto: PrestaLibros
+
+Descripcion: 
+Es un sitio que permite el registro de libros, donde podras compartir y subir los mejores libros que conozcas, seras capaz ademas de
+enviar solicitud a los usuarios para solicitar los libros de una manera facil y sencilla, tiene una interfaz limpia y sencilla para que la experiencia sea la más agradable, que esperas, empieza a compartir tus mejores lecturas
+
+Integrantes: 
+Cesar Preciado
+Esteban Sevilla
+
+Instruciones de instalación:
+    git clone url
+    cd PrestaLibros
+    copias y modificas el archivo .env .example
+    composer update
+    php artisan key:generate
+    reinicias laragon
+    <br>
+    #Archivo
+    php artisan storage:link
+    insertar en la carpeta storage/app/public la imagen default.jpeg
+    <br>
+    #Correo
+    Cambiar el valor de la linea 16 de sync a database
+    modificar la linea 18 del archivo .env de sync a database
+    Descomentar las lineas 35-42 del archivo .en
+    Eliminar lineas 26-33 del archivo .env
+    <br>
+    Ejecutar los seeders y factories
+    <br>
+    #correr task scheuduling y job
+    php artisan schedule:run
+    para correr el job sera necesario ingresar a la url http://prestalibros.test/emails.libroscount y en el terminal que se use utilizar el siguiente comando php artisan queue:work
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
